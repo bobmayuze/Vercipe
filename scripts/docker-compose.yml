@@ -1,0 +1,15 @@
+version: '3'
+
+services: 
+  mongo_db:
+    container_name: mongo
+    image: 'aashreys/mongo-auth'
+    environment:
+      - AUTH=yes 
+      - MONGODB_ADMIN_USER=yuzema 
+      - MONGODB_ADMIN_PASS=yuzebobma 
+      - MONGODB_APPLICATION_DATABASE=FinDB 
+      - MONGODB_APPLICATION_USER=yuze 
+      - MONGODB_APPLICATION_PASS=yuzeiscoming      
+    ports:
+      - "27017:27017"
