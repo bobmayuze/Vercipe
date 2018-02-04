@@ -1,4 +1,4 @@
-version: '3'
+version: '2'
 
 services: 
   mongo_db:
@@ -6,10 +6,27 @@ services:
     image: 'aashreys/mongo-auth'
     environment:
       - AUTH=yes 
-      - MONGODB_ADMIN_USER=yuzema 
-      - MONGODB_ADMIN_PASS=yuzebobma 
-      - MONGODB_APPLICATION_DATABASE=FinDB 
-      - MONGODB_APPLICATION_USER=yuze 
-      - MONGODB_APPLICATION_PASS=yuzeiscoming      
+      - MONGODB_ADMIN_USER=vercipeAdmin 
+      - MONGODB_ADMIN_PASS=vercipeAdminPass 
+      - MONGODB_APPLICATION_DATABASE=VercipeDB 
+      - MONGODB_APPLICATION_USER=vercipeDev 
+      - MONGODB_APPLICATION_PASS=vercipeDevPass      
     ports:
       - "27017:27017"
+
+  mongo_express:
+    container_name: mongo_express
+    image: 'mongo-express'
+    environment:
+      - ME_CONFIG_MONGODB_ENABLE_ADMIN=true
+      - ME_CONFIG_OPTIONS_EDITORTHEME=ambiance
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=vercipeAdmin 
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=vercipeAdminPass 
+      - ME_CONFIG_MONGODB_AUTH_DATABASE=VercipeDB 
+      - ME_CONFIG_MONGODB_AUTH_USERNAME=vercipeDev 
+      - ME_CONFIG_MONGODB_AUTH_PASSWORD=vercipeDevPass 
+    depends_on:
+      - mongo_db
+    ports:
+      - "8081:8081"
+  
