@@ -29,4 +29,29 @@ services:
       - mongo_db
     ports:
       - "8081:8081"
-  
+
+  express_backend:
+    container_name: vercipe_backend
+    build: ../vercipe_backend/vercipe
+    stdin_open: true
+    tty: true
+    # depends_on:
+    #   - mongo_db
+    ports:
+      - "3000:3000"
+    volumes:
+      - ../vercipe_backend/vercipe:/usr/src/vercipe_backend
+
+  # angular_frontend:
+    # container_name: vercipe_frontend
+    # build: ../vercipe_frontend/angular4-docker-example
+    # stdin_open: true
+    # tty: true
+    # depends_on:
+    #   - mongo_db
+    # ports:
+    #   - "3000:3000"
+    # volumes:
+      # - ../vercipe_frontend/angular4-docker-example:/usr/src/vercipe_backend
+    
+
