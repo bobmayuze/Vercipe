@@ -8,7 +8,7 @@ Data Schema for a recipe
 	Creator: String,
 	Instructions: String,
 	Version: Int,
-	Previous_version: ID: Int
+	Previous_version: Int
 }
 
 ```
