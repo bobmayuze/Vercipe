@@ -5,13 +5,10 @@ Data Schema for a recipe
 ```
 {
 	Recipe Title: String,
-	Ingredient: [{
-		Amount: Number,
-		Unit: String,
-		Name:
-	}]
-	Direction: String
-
+	Creator: String,
+	Instructions: String,
+	Version: Int,
+	Previous_version: ID: Int
 }
 
 ```
