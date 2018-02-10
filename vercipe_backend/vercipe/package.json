@@ -12,9 +12,9 @@
     "express": "~4.15.5",
     "jade": "~1.11.0",
     "morgan": "~1.9.0",
+    "nodemon": "^1.14.12",
     "npm": "^5.6.0",
     "serve-favicon": "~2.4.5",
-    "nodemon": "*",
     "start": "^5.1.0"
   }
 }
