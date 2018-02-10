@@ -1,12 +1,43 @@
 # Vercipe
 Version control based recipe for Spring 18 ITWS 4500 course.
 
+
+## Getting Started
+Before you started, make sure you have docker installed and can run the hello-world demo.
+
+1. Clone the repo
+
+```
+$ git clone https://github.com/bobmayuze/Vercipe
+```
+
+2. Build images. You will see db not connected this time, don't worry about it.
+```
+$ ./scripts/init.sh
+```
+
+
+3. Rebuild containers
+```
+$ ./scripts/init.sh 
+```
+
+4. Vola, you are all set!
+
+
+
+
+
 Data Schema for a recipe
 ```
 {
-	Recipe Title: String,
+	_id : ObjectId,
+	Recipe_Title: String,
 	Creator: String,
+	Creator_Email: String,
+	Material_List: [String],
 	Instructions: String,
+	Create_Time: Unix Timestamp,
 	Version: Int,
 	Previous_version: Int
 }
