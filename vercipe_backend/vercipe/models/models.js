@@ -32,4 +32,28 @@ var recipe = new mongoose.Schema({
     previous_version: String
 });
 
+var userSchema = new mongoose.Schema({
+    email: {
+        type: String,
+        unique: true,
+        required: true,
+        trim: true
+    },
+    username: {
+        type: String,
+        unique: true,
+        required: true,
+        trim: true
+    },
+    password: {
+        type: String,
+        required: true,
+    },
+    passwordConf: {
+        type: String,
+        required: true,
+    }    
+});
+
 exports.recipeModel = mongoose.model("recipe", recipe, "Recipes");
+exports.userModel = mongoose.model("user", userSchema, "Users");

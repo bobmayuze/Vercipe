@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
-var recipeModels = require('../models/models');
+var Models = require('../models/models');
 var MongoClient = require('mongodb').MongoClient;
 var ObjectID = require('mongodb').ObjectID;
 var mongoose = require('mongoose');
-var recipe = recipeModels.recipeModel;
+var recipe = Models.recipeModel;
 var service = require('../services/recipe');
 
 
