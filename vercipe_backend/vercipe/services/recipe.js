@@ -45,7 +45,11 @@ module.exports.findRecipeById = async (id)=>{
     return target;
 }
 
-module.exports.findRecipeByName = (req, res)=>{
-    console.log("TODO");
+module.exports.findRecipeByTitle = async(title)=>{
+    var target;
+    await recipe.find({ "title": { $regex: title } }, (err, result) => {
+        target = result;
+    });
+    return target;
 };
 

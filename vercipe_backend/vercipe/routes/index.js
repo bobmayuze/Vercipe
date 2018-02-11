@@ -51,6 +51,12 @@ router.post("/recipes/byMail", (req, res) => {
   });
 });
 
+// Find one by Title 
+router.post("/recipes/byTitle", async(req, res)=>{
+  const result = await service.findRecipeByTitle(req.body.title);
+  res.send(result);
+});
+
 // Delete one by id
 router.delete("/recipes",(req, res)=>{
   console.log("DELETE ONE ");
