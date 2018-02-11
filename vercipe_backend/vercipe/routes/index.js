@@ -6,7 +6,7 @@ var ObjectID = require('mongodb').ObjectID;
 var mongoose = require('mongoose');
 var recipe = Models.recipeModel;
 var service = require('../services/recipe');
-const asyncHandler = require('express-async-handler')
+
 
 
 async function wait(ms) {
@@ -65,6 +65,25 @@ router.delete("/recipes",(req, res)=>{
   })
 });
 
+// Clone a recipe
+router.post("/recipes/forkById", async(req, res)=>{
+  const thisUser = req.session.user;
+  if (thisUser) {
+    // console.log("User session: ",req.session.user);
+    const originalRecipe = await service.findRecipeById(mongoose.Types.ObjectId(req.body.id));
+    // console.log("We are cloning", originalRecipe);
+    var flag = await service.forkByRecipe(originalRecipe, thisUser);
+    if (flag) {
+      res.send("Success");
+    } else {
+      res.send("Nahhhhhh");
+    };    
+  }
+  else{
+    res.send("Please login first.");
+  }
+
+})
 
 
 module.exports = router;

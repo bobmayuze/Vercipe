@@ -10,7 +10,7 @@ services:
       - MONGODB_ADMIN_PASS=vercipeAdminPass 
       - MONGODB_APPLICATION_DATABASE=VercipeDB 
       - MONGODB_APPLICATION_USER=vercipeDev 
-      - MONGODB_APPLICATION_PASS=vercipeDevPass      
+      - MONGODB_APPLICATION_PASS=vercipeDevPass
     ports:
       - "27017:27017"
 

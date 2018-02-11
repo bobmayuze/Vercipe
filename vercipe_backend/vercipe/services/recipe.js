@@ -28,10 +28,11 @@ module.exports.createByReq = (req, res)=>{
     newRecipe.creator = req.body.creator || "Gordon Ramsay";
     newRecipe.materials = req.body.materials || ["A", "B", "C"];
     newRecipe.version = req.body.version || 1;
+    newRecipe.previous_version = req.body.version || "None";
     newRecipe.save((err) => {
         if (err) console.log(err);
         else {
-            console.log("successfully registered");
+            console.log("successfully created");
             res.send("success ... ");
         }
     });
@@ -53,3 +54,22 @@ module.exports.findRecipeByTitle = async(title)=>{
     return target;
 };
 
+module.exports.forkByRecipe = async(originalRecipe, user=null)=>{
+    console.log("User: \n",user)
+
+    var newRecipe = new recipe;
+    var flag;
+    newRecipe.version = originalRecipe.version + 1;
+    newRecipe.previous_version = originalRecipe.id;
+    newRecipe.title = originalRecipe.title;
+    newRecipe.materials = originalRecipe.materials;
+    newRecipe.creator = user.username;
+
+    await newRecipe.save((err) => {
+        if (err) console.log(err);
+        else {
+            flag = true;
+        }
+    });
+    return flag;
+};
