@@ -37,4 +37,15 @@ module.exports.createByReq = (req, res)=>{
     });
 };
 
+module.exports.findRecipeById = async (id)=>{
+    var target;
+    await recipe.findById(id, (err, result) => {
+        target = result;
+    });
+    return target;
+}
+
+module.exports.findRecipeByName = (req, res)=>{
+    console.log("TODO");
+};
 

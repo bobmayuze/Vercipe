@@ -6,13 +6,22 @@ var ObjectID = require('mongodb').ObjectID;
 var mongoose = require('mongoose');
 var recipe = Models.recipeModel;
 var service = require('../services/recipe');
+const asyncHandler = require('express-async-handler')
 
 
-
+async function wait(ms) {
+  return new Promise((resolve, reject) => {
+    setTimeout(resolve, ms)
+  });
+}
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express X' });
+router.get('/', async(req, res, next)=>{
+  // res.render('index', { title: 'Express X' });
+  console.log('before wait', new Date());
+  await wait(5 * 1000);
+  console.log('after wait', new Date())
+  res.send('hello world');
 });
 
 // Create a recipe
@@ -28,12 +37,9 @@ router.get("/allRecipes",(req, res)=>{
 });
 
 // Find one by id
-router.post("/recipes", (req, res) => {
-  console.log("By id Findding result for", req.body)
-  recipe.findById(mongoose.Types.ObjectId(req.body.id) , (err,result) => {
-    console.log(result);
-    res.send(result);
-  });
+router.post("/recipes", async(req, res)=>{
+  const target = await service.findRecipeById(mongoose.Types.ObjectId(req.body.id));
+  res.send(target);
 });
 
 // Find one by email
