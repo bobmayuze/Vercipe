@@ -5,6 +5,7 @@ var MongoClient = require('mongodb').MongoClient;
 var ObjectID = require('mongodb').ObjectID;
 var mongoose = require('mongoose');
 var recipe = recipeModels.recipeModel;
+var service = require('../services/recipe');
 
 
 
@@ -16,19 +17,7 @@ router.get('/', function(req, res, next) {
 
 // Create a recipe
 router.post('/newRecipe', (req, res) => {
-  console.log("Creating new Recipe ")
-  var newRecipe = new recipe;
-  newRecipe.title = req.body.title || "idiot sandwich";
-  newRecipe.creator = req.body.creator || "Gordon Ramsay";
-  newRecipe.materials = req.body.materials || ["A", "B"];
-  newRecipe.version = req.body.version || 1;
-  newRecipe.save((err) => {
-    if (err) console.log(err);
-    else {
-      console.log("successfully registered");
-      res.send("success ... ");
-    }
-  });
+  service.createByReq(req,res);
 });
 
 // Read all recipes
@@ -62,7 +51,6 @@ router.delete("/recipes",(req, res)=>{
   recipe.findByIdAndRemove(req.body.id, (err, target_recipe)=>{
     res.send(target_recipe);
   })
-  // res.send("Delete executed successfully")
 });
 
 
