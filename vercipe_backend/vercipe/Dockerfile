@@ -13,4 +13,4 @@ COPY . $SRC_PATH
 
 RUN npm install
 
-ENTRYPOINT ["nodemon"]
+CMD ["nodemon"]
