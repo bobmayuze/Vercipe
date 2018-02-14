@@ -1,5 +1,5 @@
 # Vercipe
-Version control based recipe for Spring 18 ITWS 4500 course.
+Version control based recipe for Spring 18 ITWS 4500 course. 
 
 
 ## Getting Started
@@ -24,7 +24,10 @@ $ ./scripts/init.sh
 
 4. Vola, you are all set!
 
+## Project proposals:
 
+1. Proposal.pdf
+2. Vercipe Project Timeline - Gantt Chart.pdf
 
 
 
