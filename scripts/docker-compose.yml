@@ -41,17 +41,18 @@ services:
       - "3000:3000"
     volumes:
       - ../vercipe_backend/vercipe:/usr/src/vercipe_backend
+      - /usr/src/vercipe_backend/node_modules
 
-  angular_frontend:
-    container_name: vercipe_frontend
-    build: ../vercipe_frontend/angular4
-    stdin_open: true
-    tty: true
-    depends_on:
-      - mongo_db
-    ports:
-      - "80:80"
-    volumes:
-      - ../vercipe_frontend/angular4:/usr/src/vercipe_frontend
+  # angular_frontend:
+  #   container_name: vercipe_frontend
+  #   build: ../vercipe_frontend/angular4
+  #   stdin_open: true
+  #   tty: true
+  #   depends_on:
+  #     - mongo_db
+  #   ports:
+  #     - "80:80"
+  #   volumes:
+  #     - ../vercipe_frontend/angular4:/usr/src/vercipe_frontend
     
 
