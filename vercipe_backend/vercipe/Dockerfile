@@ -15,4 +15,4 @@ COPY . $SRC_PATH
 
 RUN npm install
 
-CMD ["nodemon"]
+CMD ["nodemon", "/usr/src/vercipe_backend/bin/www"]
