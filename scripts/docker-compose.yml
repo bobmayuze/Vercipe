@@ -40,8 +40,8 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ../vercipe_backend/vercipe:/usr/src/vercipe_backend
-      - /usr/src/vercipe_backend/node_modules
+      - ../vercipe_backend/vercipe:/usr/src/
+      - /usr/src/node_modules
 
   # angular_frontend:
   #   container_name: vercipe_frontend
