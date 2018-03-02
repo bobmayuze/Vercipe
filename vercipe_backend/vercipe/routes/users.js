@@ -5,24 +5,26 @@ var user = Models.userModel;
 var service = require('../services/user');
 
 
-/* GET users listing. */
+// [1] Default, test encrypt function
 router.get('/', function(req, res, next) {
   service.encrypt("Yoho");
-  res.send('respond with a resource');
+  res.send({ "msg": 'hello world' });
 });
 
-// Sign up
+// [2] Sign Up
 router.post('/sign_up', function (req, res, next) {
   service.createUser(req,res);
   // res.send('respond with a resource');
 });
 
+// [3] Login as user
 // Login, this will attach session to user
 router.post('/log_in', (req,res,next)=>{
-  console.log("LOG IN");
+  console.log("LOG IN...");
   service.login(req, res);
 });
 
+// [4] demo endpoint to test if user is logged in
 // dashborad for checking if used is loged in or not
 router.get('/dashboard', (req, res, next) => {
   var login = service.checkStatus(req, res);
