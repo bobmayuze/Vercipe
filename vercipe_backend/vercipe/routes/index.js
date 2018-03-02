@@ -15,34 +15,34 @@ async function wait(ms) {
   });
 }
 
-/* GET home page. */
+// [1] Get default api to make sure backend is successfully set
 router.get('/', async(req, res, next)=>{
   // res.render('index', { title: 'Express X' });
   console.log('before wait', new Date());
   await wait(5 * 1000);
   console.log('after wait', new Date())
-  res.send('hello world');
+  res.send({"msg" : 'hello world'});
 });
 
-// Create a recipe
+// [2] Create a new recipe
 router.post('/newRecipe', (req, res) => {
   service.createByReq(req,res);
 });
 
-// Read all recipes
+// [3] Get all Recipes as json array
 router.get("/allRecipes",(req, res)=>{
   allRecipes = recipe.find((err, result)=>{
     res.send(result);
   });
 });
 
-// Find one by id
+// [4] Find one by id
 router.post("/recipes", async(req, res)=>{
   const target = await service.findRecipeById(mongoose.Types.ObjectId(req.body.id));
   res.send(target);
 });
 
-// Find one by email
+// [5] Find recipe by creator's email
 router.post("/recipes/byMail", (req, res) => {
   console.log("Findding result for", req.body.email)
   recipe.find({ "creator_email": req.body.email}, (err, result) => {
@@ -51,13 +51,13 @@ router.post("/recipes/byMail", (req, res) => {
   });
 });
 
-// Find one by Title 
+// [6] Find recipe by recipe's title
 router.post("/recipes/byTitle", async(req, res)=>{
   const result = await service.findRecipeByTitle(req.body.title);
   res.send(result);
 });
 
-// Delete one by id
+// [7] Delete recipe by recipe's ObjectId
 router.delete("/recipes",(req, res)=>{
   console.log("DELETE ONE ");
   recipe.findByIdAndRemove(req.body.id, (err, target_recipe)=>{

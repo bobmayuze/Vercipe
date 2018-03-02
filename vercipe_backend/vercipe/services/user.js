@@ -36,13 +36,13 @@ module.exports.login = (req, res)=>{
             return res.status(500).send();
         }
         if (!result) {
-            console.log("Login failed");
-            return res.status(404).send();
+            console.log("Login failed, Username or password doesn't match");
+            return res.status(404).send({ "msg": "Username or password doesn't match" });
         }
         console.log("Login successfully as", username);
         console.log(result);
         req.session.user = result;
-        return res.status(200).send();
+        return res.status(200).send({"msg":"Success"});
         
     });
 }

@@ -33,7 +33,7 @@ module.exports.createByReq = (req, res)=>{
         if (err) console.log(err);
         else {
             console.log("successfully created");
-            res.send("success ... ");
+            res.send({"status" : "success ... "});
         }
     });
 };
