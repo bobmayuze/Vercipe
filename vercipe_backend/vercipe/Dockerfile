@@ -6,7 +6,7 @@ RUN npm install --global nodemon
 
 RUN npm install --global express
 
-ENV SRC_PATH /usr/src/vercipe_backend
+ENV SRC_PATH /usr/src/
 
 RUN mkdir -p $SRC_PATH
 
@@ -15,4 +15,4 @@ COPY . $SRC_PATH
 
 RUN npm install
 
-CMD ["nodemon"]
+CMD ["nodemon", "/usr/src/bin/www"]
