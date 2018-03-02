@@ -1,12 +1,12 @@
 <header>
     <nav>
         <div fxFlex fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center">
-            <div fxFlex="40">
+            <!-- <div fxFlex="40">
                 <a mat-raised-button *ngFor="let item of menuItems" routerLink="{{item.link}}">
                     {{item.name | uppercase}}
                 </a>
-            </div>
-            <div fxFlex="20" id="today">
+            </div> -->
+            <div fxFlex="33" id="today" class="text-left">
                 <sample-component [locale]="currentLang"></sample-component>
             </div>
             <div fxFlex class="text-right">
@@ -18,20 +18,20 @@
                     <button mat-menu-item (click)="changeLanguage('en')">
                         <mat-icon>flag</mat-icon>
                         <span>
-                English
-            </span>
+                            English
+                        </span>
                     </button>
                     <button mat-menu-item (click)="changeLanguage('es')">
                         <mat-icon>flag</mat-icon>
                         <span>
-                Español
-            </span>
+                            Español
+                        </span>
                     </button>
                     <button mat-menu-item (click)="changeLanguage('pt-br')">
                         <mat-icon>flag</mat-icon>
                         <span>
-                Português
-            </span>
+                            Português
+                        </span>
                     </button>
                 </mat-menu>
                 <a class="image-icon" href="{{appConfig.repositoryURL}}" target="_blank">

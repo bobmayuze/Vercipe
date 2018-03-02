@@ -18,6 +18,8 @@ import {ProgressBarService} from './core/progress-bar.service';
 import {ProgressInterceptor} from './shared/interceptors/progress.interceptor';
 import {TimingInterceptor} from './shared/interceptors/timing.interceptor';
 import {SampleModule} from 'angular-example-library';
+import { RecipeComponent } from './recipe/recipe.component';
+import { UserLoginComponent } from './user-login/user-login.component';
 
 @NgModule({
   imports: [
@@ -43,7 +45,9 @@ import {SampleModule} from 'angular-example-library';
   ],
   declarations: [
     AppComponent,
-    HeroTopComponent
+    HeroTopComponent,
+    RecipeComponent,
+    UserLoginComponent
   ],
   providers: [
     {provide: APP_CONFIG, useValue: AppConfig},
@@ -53,5 +57,4 @@ import {SampleModule} from 'angular-example-library';
   bootstrap: [AppComponent]
 })
 
-export class AppModule {
-}
+export class AppModule { }

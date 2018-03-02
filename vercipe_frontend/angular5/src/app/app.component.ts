@@ -25,23 +25,23 @@ export class AppComponent {
     this.translateService.setDefaultLang('en');
     this.translateService.use('en');
 
-    this.title.setTitle('Angular Example App');
+    this.title.setTitle('Vercipe');
     this.router.events.subscribe((event: any) => {
       if (event instanceof NavigationEnd) {
         switch (event.urlAfterRedirects) {
           case '/':
             this.meta.updateTag({
               name: 'description',
-              content: 'Angular Example app with Angular CLI, Angular Material and more'
+              content: 'Vercipe'
             });
             break;
-          case '/' + AppConfig.routes.heroes:
-            this.title.setTitle('Heroes list');
-            this.meta.updateTag({
-              name: 'description',
-              content: 'List of super-heroes'
-            });
-            break;
+          // case '/' + AppConfig.routes.heroes:
+          //   this.title.setTitle('Heroes list');
+          //   this.meta.updateTag({
+          //     name: 'description',
+          //     content: 'List of super-heroes'
+          //   });
+          //   break;
         }
       }
     });
