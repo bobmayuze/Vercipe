@@ -1,0 +1,66 @@
+#left {
+  width: 50%;
+  float: left;
+  margin-left: 6%;
+}
+
+#right {
+  margin-left: 50%;
+  text-align: center;
+  padding-right: 17%;
+}
+
+.clear {
+  clear: both;
+}
+
+.mat-list {
+  margin: 0 auto;
+  display: table;
+
+  /deep/ .mat-list-text {
+    text-align: left !important;
+  }
+}
+
+.hero-actions {
+  padding-bottom: 0;
+
+  .remove-icon {
+    padding-left: 0.5em;
+    color: darkslategrey;
+    cursor: pointer;
+  }
+}
+
+form {
+  display: grid;
+  width: 80%;
+  margin: 0 auto;
+
+  .mat-raised-button {
+    color: white;
+    background: #3f51b5;
+    width: 50%;
+    margin: 0 auto;
+  }
+
+  .mat-form-field {
+    width: 100%;
+  }
+}
+
+@media (max-width: 680px) {
+  #left {
+    width: 100%;
+    float: none;
+    margin: 0 auto;
+  }
+
+  #right {
+    margin: 1em auto 0;
+    width: 90%;
+    float: none;
+    padding: 0;
+  }
+}

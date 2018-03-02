@@ -1,0 +1,22 @@
+#heroes-list {
+  margin: 2em;
+}
+
+.hero-card {
+  margin: 2em auto;
+}
+
+.progress-spinner {
+  margin: 0 auto;
+}
+
+@media (max-width: 680px) {
+  .hero-card {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .mat-card {
+    margin-bottom: 2em;
+  }
+}
