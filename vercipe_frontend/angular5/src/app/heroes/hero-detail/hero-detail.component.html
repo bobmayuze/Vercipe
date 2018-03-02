@@ -1,0 +1,27 @@
+<h1 class="section-title">{{'heroDetail' | translate}}</h1>
+<mat-progress-spinner *ngIf="!hero"
+                      class="progress-spinner"
+                      [color]="'primary'"
+                      [mode]="'indeterminate'">
+</mat-progress-spinner>
+<div id="heroe-detail" *ngIf="hero">
+    <ng-container>
+        <mat-card class="hero-card">
+            <mat-card-header>
+                <div mat-card-avatar class="hero-header-image"
+                     [ngStyle]="{'background-image': 'url(assets/images/heroes/' + hero.id + '-thumbnail.jpg)'}"></div>
+                <mat-card-title>{{hero.name}}</mat-card-title>
+                <mat-card-subtitle>{{hero.alterEgo}}</mat-card-subtitle>
+                <div class="flex-spacer"></div>
+                <div class="hero-actions">
+                    {{hero.likes}}
+                    <mat-icon matTooltip="{{(canVote ? 'canVote' : 'cannotVote') | translate}}"
+                              [matTooltipPosition]="'above'"
+                              class="like-icon" (click)="like(hero)">favorite
+                    </mat-icon>
+                </div>
+            </mat-card-header>
+            <img mat-card-image src="assets/images/heroes/{{hero.id}}.jpg">
+        </mat-card>
+    </ng-container>
+</div>

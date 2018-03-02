@@ -1,57 +1,57 @@
 version: '2'
 
 services: 
-  mongo_db:
-    container_name: mongo
-    image: 'aashreys/mongo-auth'
-    environment:
-      - AUTH=yes 
-      - MONGODB_ADMIN_USER=vercipeAdmin 
-      - MONGODB_ADMIN_PASS=vercipeAdminPass 
-      - MONGODB_APPLICATION_DATABASE=VercipeDB 
-      - MONGODB_APPLICATION_USER=vercipeDev 
-      - MONGODB_APPLICATION_PASS=vercipeDevPass
-    ports:
-      - "27017:27017"
+  # mongo_db:
+  #   container_name: mongo
+  #   image: 'aashreys/mongo-auth'
+  #   environment:
+  #     - AUTH=yes 
+  #     - MONGODB_ADMIN_USER=vercipeAdmin 
+  #     - MONGODB_ADMIN_PASS=vercipeAdminPass 
+  #     - MONGODB_APPLICATION_DATABASE=VercipeDB 
+  #     - MONGODB_APPLICATION_USER=vercipeDev 
+  #     - MONGODB_APPLICATION_PASS=vercipeDevPass
+  #   ports:
+  #     - "27017:27017"
 
-  mongo_express:
-    container_name: mongo_express
-    image: 'mongo-express'
-    environment:
-      - ME_CONFIG_MONGODB_ENABLE_ADMIN=true
-      - ME_CONFIG_OPTIONS_EDITORTHEME=ambiance
-      - ME_CONFIG_MONGODB_ADMINUSERNAME=vercipeAdmin 
-      - ME_CONFIG_MONGODB_ADMINPASSWORD=vercipeAdminPass 
-      - ME_CONFIG_MONGODB_AUTH_DATABASE=VercipeDB 
-      - ME_CONFIG_MONGODB_AUTH_USERNAME=vercipeDev 
-      - ME_CONFIG_MONGODB_AUTH_PASSWORD=vercipeDevPass 
-    depends_on:
-      - mongo_db
-    ports:
-      - "8081:8081"
+  # mongo_express:
+  #   container_name: mongo_express
+  #   image: 'mongo-express'
+  #   environment:
+  #     - ME_CONFIG_MONGODB_ENABLE_ADMIN=true
+  #     - ME_CONFIG_OPTIONS_EDITORTHEME=ambiance
+  #     - ME_CONFIG_MONGODB_ADMINUSERNAME=vercipeAdmin 
+  #     - ME_CONFIG_MONGODB_ADMINPASSWORD=vercipeAdminPass 
+  #     - ME_CONFIG_MONGODB_AUTH_DATABASE=VercipeDB 
+  #     - ME_CONFIG_MONGODB_AUTH_USERNAME=vercipeDev 
+  #     - ME_CONFIG_MONGODB_AUTH_PASSWORD=vercipeDevPass 
+  #   depends_on:
+  #     - mongo_db
+  #   ports:
+  #     - "8081:8081"
 
-  express_backend:
-    container_name: vercipe_backend
-    build: ../vercipe_backend/vercipe
-    stdin_open: true
-    tty: true
-    depends_on:
-      - mongo_db
-    ports:
-      - "3000:3000"
-    volumes:
-      - ../vercipe_backend/vercipe:/usr/src/vercipe_backend
+  # express_backend:
+  #   container_name: vercipe_backend
+  #   build: ../vercipe_backend/vercipe
+  #   stdin_open: true
+  #   tty: true
+  #   depends_on:
+  #     - mongo_db
+  #   ports:
+  #     - "3000:3000"
+  #   volumes:
+  #     - ../vercipe_backend/vercipe:/usr/src/vercipe_backend
 
   angular_frontend:
     container_name: vercipe_frontend
-    build: ../vercipe_frontend/angular4
+    build: ../vercipe_frontend/angular5
     stdin_open: true
     tty: true
-    depends_on:
-      - mongo_db
+    # depends_on:
+    #   - mongo_db
     ports:
       - "80:80"
     volumes:
-      - ../vercipe_frontend/angular4:/usr/src/vercipe_frontend
+      - ../vercipe_frontend/angular5:/usr/src/vercipe_frontend
     
 

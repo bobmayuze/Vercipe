@@ -1,0 +1,15 @@
+:host(app-search-bar) {
+  /deep/ .mat-input-placeholder {
+    font-weight: 100;
+    color: white;
+  }
+
+  /deep/ .mat-input-underline {
+    background-color: white;
+    bottom: 1.5em;
+  }
+
+  /deep/ .mat-input-infix {
+    border-top: 1.2em solid transparent;
+  }
+}

