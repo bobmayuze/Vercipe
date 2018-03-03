@@ -152,7 +152,7 @@ Request Body:
 Response: 200, if success
 ```
 
-#### [3] Log in as a user
+#### [3] Login as user
 ```
 Endpoint: POST /sign_up
 Authorization: none
