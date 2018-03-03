@@ -13,7 +13,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {HttpLoaderFactory} from './app.translate.factory';
-import {HeroTopComponent} from './heroes/hero-top/hero-top.component';
 import {ProgressBarService} from './core/progress-bar.service';
 import {ProgressInterceptor} from './shared/interceptors/progress.interceptor';
 import {TimingInterceptor} from './shared/interceptors/timing.interceptor';
@@ -45,7 +44,6 @@ import { UserLoginComponent } from './user-login/user-login.component';
   ],
   declarations: [
     AppComponent,
-    HeroTopComponent,
     RecipeComponent,
     UserLoginComponent
   ],

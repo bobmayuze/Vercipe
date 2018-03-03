@@ -4,9 +4,10 @@ var Schema = mongoose.Schema;
 mongoose.Promise = require('bluebird');
 mongoose.connect('mongodb://vercipeDev:vercipeDevPass@mongo_db:27017/VercipeDB', {
     useMongoClient: true,
+
 });
 
-var recipe = new mongoose.Schema({
+var recipe = new Schema({
     title: String,
     creator: { 
         type:String, 
@@ -32,7 +33,7 @@ var recipe = new mongoose.Schema({
     previous_version: String
 });
 
-var userSchema = new mongoose.Schema({
+var userSchema = new Schema({
     email: {
         type: String,
         unique: true,
