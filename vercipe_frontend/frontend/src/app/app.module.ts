@@ -41,12 +41,16 @@ import { SearchBoxComponent } from './search-box/search-box.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { CreateBoardComponent } from './create-board/create-board.component';
 
+import { RecipeComponent } from './recipe/recipe.component';
+import { HttpClientModule } from '@angular/common/http';
+import { RecipeService } from './recipe.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchBoxComponent,
-    CreateBoardComponent
+    CreateBoardComponent,
+    RecipeComponent
   ],
   imports: [
     BrowserModule,
@@ -83,9 +87,10 @@ import { CreateBoardComponent } from './create-board/create-board.component';
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [RecipeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
