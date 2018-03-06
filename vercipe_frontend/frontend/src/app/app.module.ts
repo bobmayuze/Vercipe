@@ -45,6 +45,8 @@ import { RecipeComponent } from './recipe/recipe.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RecipeService } from './recipe.service';
 import { DetailBoardComponent } from './detail-board/detail-board.component';
+import { HeaderComponent } from './common/header/header.component';
+import { FooterComponent } from './common/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,9 @@ import { DetailBoardComponent } from './detail-board/detail-board.component';
     SearchBoxComponent,
     CreateBoardComponent,
     RecipeComponent,
-    DetailBoardComponent
+    DetailBoardComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
