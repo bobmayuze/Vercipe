@@ -2,17 +2,15 @@
   padding: 8px 16px;
   color: white;
   background: #3f51b5;
-  font-family: 'Bowlby One SC', cursive;
   /* margin-top: 15em; */
   /* height: 15em; */
   /* position: sticky; */
   /* top: 100%; */
 }
 
-.mat-card {
-  max-width: 400px;
-  margin: 2em auto;
-  text-align: center;
+h1 {
+  font-family: 'Bowlby One SC', cursive;
+  font-size: 3em;
 }
 
 .fill-remaining-space {

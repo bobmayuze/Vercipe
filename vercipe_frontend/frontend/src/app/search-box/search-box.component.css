@@ -1,3 +1,7 @@
-#searchDiv {
-    height: 20em;
+#searchBox {
+    height: 30em;
+    background-color: brown;
+    text-align:center;
+
+
 }
