@@ -44,13 +44,19 @@ import { CreateBoardComponent } from './create-board/create-board.component';
 import { RecipeComponent } from './recipe/recipe.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RecipeService } from './recipe.service';
+import { DetailBoardComponent } from './detail-board/detail-board.component';
+import { HeaderComponent } from './common/header/header.component';
+import { FooterComponent } from './common/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchBoxComponent,
     CreateBoardComponent,
-    RecipeComponent
+    RecipeComponent,
+    DetailBoardComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
