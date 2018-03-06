@@ -44,13 +44,15 @@ import { CreateBoardComponent } from './create-board/create-board.component';
 import { RecipeComponent } from './recipe/recipe.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RecipeService } from './recipe.service';
+import { DetailBoardComponent } from './detail-board/detail-board.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchBoxComponent,
     CreateBoardComponent,
-    RecipeComponent
+    RecipeComponent,
+    DetailBoardComponent
   ],
   imports: [
     BrowserModule,
