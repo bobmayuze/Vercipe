@@ -8,13 +8,13 @@ import { MatCardModule } from '@angular/material/card';
   styleUrls: ['./recipe.component.css']
 })
 export class RecipeComponent implements OnInit {
-	private recipeTitle: String
-	private recipeCreator: String
-	private creatorEmail: String
-	private materials: String[]
-	private instructions: String[]
-	private recipeVersion: Number
-	private createdAt: Date
+	recipeTitle: String
+	recipeCreator: String
+	creatorEmail: String
+	materials: String[]
+	instructions: String[]
+	recipeVersion: Number
+	createdAt: Date
 
   constructor() { 
   	this.recipeTitle = 'Pasta Idiota';
@@ -28,6 +28,10 @@ export class RecipeComponent implements OnInit {
 
   ngOnInit() {
 
+  }
+
+  getRecipe() {
+  	this.recipe
   }
 
 }
