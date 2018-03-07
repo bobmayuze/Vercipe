@@ -47,6 +47,10 @@ import { RecipeService } from './recipe.service';
 import { DetailBoardComponent } from './detail-board/detail-board.component';
 import { HeaderComponent } from './common/header/header.component';
 import { FooterComponent } from './common/footer/footer.component';
+import { RecipeListComponent } from './recipe-list/recipe-list.component';
+import { SignUpComponent } from './user/sign-up/sign-up.component';
+import { LogInComponent } from './user/log-in/log-in.component';
+import { DashboardComponent } from './user/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +60,11 @@ import { FooterComponent } from './common/footer/footer.component';
     RecipeComponent,
     DetailBoardComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    RecipeListComponent,
+    SignUpComponent,
+    LogInComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
