@@ -8,13 +8,13 @@ import { RecipeService } from '../recipe.service';
   styleUrls: ['./recipe.component.css']
 })
 export class RecipeComponent implements OnInit {
-	title:String = null
-	creator:String = null
-	creator_email:String = null
-	materials:String[] = null
-	instructions: String = null
-	version:Number = null
-	created_at:Date = null
+	title: string = null;
+	creator: string = null;
+	creator_email: string = null;
+	materials: string[] = null;
+	instructions: string = null;
+	version: number = null;
+	created_at: date = null;
 
   constructor(private service: RecipeService) { }
 

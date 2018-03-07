@@ -41,7 +41,6 @@ import { SearchBoxComponent } from './search-box/search-box.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { CreateBoardComponent } from './create-board/create-board.component';
 
-import { RecipeComponent } from './recipe/recipe.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RecipeService } from './recipe.service';
 import { DetailBoardComponent } from './detail-board/detail-board.component';
@@ -57,7 +56,6 @@ import { DashboardComponent } from './user/dashboard/dashboard.component';
     AppComponent,
     SearchBoxComponent,
     CreateBoardComponent,
-    RecipeComponent,
     DetailBoardComponent,
     HeaderComponent,
     FooterComponent,
