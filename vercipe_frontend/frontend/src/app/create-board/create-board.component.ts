@@ -10,6 +10,8 @@ export class CreateBoardComponent implements OnInit {
 
   instruct: any[] = ["test1", "test2"];
 
+  materials: any[] = ["mat1", "mat2"];
+
   /*
   instruct: any[] = [
     {
@@ -38,6 +40,14 @@ export class CreateBoardComponent implements OnInit {
 
   remStep(): void {
     this.instruct.pop();
+  }
+
+  addMat(): void {
+    this.materials.push("mat3");
+  }
+
+  remMat(): void {
+    this.materials.pop();
   }
 
 }
