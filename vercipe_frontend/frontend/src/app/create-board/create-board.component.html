@@ -17,4 +17,66 @@
     <button #submitButton mat-raised-button color="primary">Submit</button>
     <button #submitButton mat-raised-button color="primary" (click)="goBack()">Go Back</button>
   </div>
+<div style="text-align:center">
+  <span style="position:relative; margin-left:-17.75%">Title:</span>
+  <br/>
+  <mat-form-field style="width:20%">
+    <input matInput placeholder="Title">
+  </mat-form-field>
+  <br/>
+
+  <span style="position:relative; margin-left:-16.5%">Creator:</span>
+  <br/>
+  <mat-form-field style="width:20%">
+    <input matInput placeholder="Name">
+  </mat-form-field>
+  <br/>
+
+  <span style="position:relative; margin-left:-16.75%">Email:</span>
+  <br/>
+  <mat-form-field style="width:20%">
+    <input matInput placeholder="Email">
+  </mat-form-field>
+  <br/>
+
+  <span style="position:relative; margin-left:-15%">Materials:</span>
+  <br/>
+  <div *ngFor="let mat of materials; let i = index">
+    {{i+1}}:
+    <mat-form-field
+        hideRequiredMarker="never"
+        floatLabel="never"
+        style="width:20%">
+      <input matInput placeholder="Material" required>
+    </mat-form-field>
+  </div>
+
+  <button #submitButton mat-raised-button color="primary" (click)="addMat()">Add</button>
+  <button #submitButton mat-raised-button color="primary" (click)="remMat()">Remove</button>
+  <br/>
+  <br/>
+
+  <span style="position:relative; margin-left:-12.77%">Instructions:</span>
+  <br/>
+  <div *ngFor="let step of instruct; let i = index">
+    {{i+1}}:
+    <mat-form-field
+        hideRequiredMarker="never"
+        floatLabel="never"
+        style="width:20%">
+      <input matInput placeholder="Instuction" required>
+    </mat-form-field>
+  </div>
+
+  <button #submitButton mat-raised-button color="primary" (click)="addStep()">Add</button>
+  <button #submitButton mat-raised-button color="primary" (click)="remStep()">Remove</button>
+</div>
+
+<div style="text-align:center">
+  <br/>
+  <br/>
+  <button #submitButton style="width:10%; margin:0; background-color: green" mat-raised-button color="primary">Submit</button>
+  <br/>
+  <br/>
+  <button #submitButton style="width:10%; margin-right:.25%; background-color: red" mat-raised-button color="primary" (click)="goBack()">Go Back</button>
 </div>

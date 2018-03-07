@@ -8,6 +8,21 @@ import { Location } from '@angular/common';
 })
 export class CreateBoardComponent implements OnInit {
 
+  instruct: any[] = ["test1", "test2"];
+
+  materials: any[] = ["mat1", "mat2"];
+
+  /*
+  instruct: any[] = [
+    {
+      "name": "Douglas  Pace"
+    },
+    {
+      "name": "Cook  Tyson"
+    }
+  ];
+  */
+
   constructor(
     private location: Location
   ) { }
@@ -17,6 +32,22 @@ export class CreateBoardComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  addStep(): void {
+    this.instruct.push("test3");
+  }
+
+  remStep(): void {
+    this.instruct.pop();
+  }
+
+  addMat(): void {
+    this.materials.push("mat3");
+  }
+
+  remMat(): void {
+    this.materials.pop();
   }
 
 }
