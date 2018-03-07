@@ -35,14 +35,14 @@ Data Schema for a recipe
 ```
 {
 	_id : ObjectId,
-	Recipe_Title: String,
-	Creator: String,
-	Creator_Email: String,
-	Material_List: [String],
-	Instructions: String,
-	Create_Time: Unix Timestamp,
-	Version: Int,
-	Previous_version: Int
+	title: String,
+    creator: String,
+	creator_Email: String,
+	materials: [String],
+	instructions: String,
+	created_at: Unix Timestamp,
+	version: Int,
+	previous_version: Int
 }
 
 ```
