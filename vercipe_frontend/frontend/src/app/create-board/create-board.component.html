@@ -3,6 +3,7 @@
     <h1>Create Your Own Recipe</h1>
   </div>
 
+  <!--
   <div style="text-align:center">
     <mat-form-field style="width:60%;">
       <input matInput placeholder="Title">
@@ -17,30 +18,32 @@
     <button #submitButton mat-raised-button color="primary">Submit</button>
     <button #submitButton mat-raised-button color="primary" (click)="goBack()">Go Back</button>
   </div>
+
+-->
 <div style="text-align:center">
-  <span style="position:relative; margin-left:-17.75%">Title:</span>
+  <!--<span style="position:relative; margin-left:-17.75%">Title:</span>-->
   <br/>
   <mat-form-field style="width:20%">
     <input matInput placeholder="Title">
   </mat-form-field>
   <br/>
 
-  <span style="position:relative; margin-left:-16.5%">Creator:</span>
+  <!--<span style="position:relative; margin-left:-16.5%">Creator:</span>-->
   <br/>
   <mat-form-field style="width:20%">
     <input matInput placeholder="Name">
   </mat-form-field>
   <br/>
 
-  <span style="position:relative; margin-left:-16.75%">Email:</span>
+  <!--<span style="position:relative; margin-left:-16.75%">Email:</span>-->
   <br/>
   <mat-form-field style="width:20%">
     <input matInput placeholder="Email">
   </mat-form-field>
   <br/>
+  <hr style="width:55%"/>
 
-  <span style="position:relative; margin-left:-15%">Materials:</span>
-  <br/>
+  <h2>Materials:</h2>
   <div *ngFor="let mat of materials; let i = index">
     {{i+1}}:
     <mat-form-field
@@ -56,8 +59,8 @@
   <br/>
   <br/>
 
-  <span style="position:relative; margin-left:-12.77%">Instructions:</span>
-  <br/>
+  <hr style="width:55%"/>
+  <h2>Instructions:</h2>
   <div *ngFor="let step of instruct; let i = index">
     {{i+1}}:
     <mat-form-field
@@ -71,6 +74,8 @@
   <button #submitButton mat-raised-button color="primary" (click)="addStep()">Add</button>
   <button #submitButton mat-raised-button color="primary" (click)="remStep()">Remove</button>
 </div>
+
+<hr style="width:55%"/>
 
 <div style="text-align:center">
   <br/>
