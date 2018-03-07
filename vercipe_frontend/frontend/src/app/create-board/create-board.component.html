@@ -41,7 +41,8 @@
     <input matInput placeholder="Email">
   </mat-form-field>
   <br/>
-  <hr/>
+  <hr style="width:55%"/>
+
   <h2>Materials:</h2>
   <div *ngFor="let mat of materials; let i = index">
     {{i+1}}:
@@ -58,7 +59,7 @@
   <br/>
   <br/>
 
-  <hr/>
+  <hr style="width:55%"/>
   <h2>Instructions:</h2>
   <div *ngFor="let step of instruct; let i = index">
     {{i+1}}:
@@ -74,7 +75,7 @@
   <button #submitButton mat-raised-button color="primary" (click)="remStep()">Remove</button>
 </div>
 
-<hr/>
+<hr style="width:55%"/>
 
 <div style="text-align:center">
   <br/>
