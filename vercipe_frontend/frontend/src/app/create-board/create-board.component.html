@@ -5,13 +5,29 @@
 </div>
 
 <div style="text-align:center">
-  Title:
+  Recipe:
   <mat-form-field>
-    <input matInput placeholder="Type Here">
+    <input matInput placeholder="Name">
   </mat-form-field>
+  <br/>
+  Instructions
+  <br/>
+  <div *ngFor="let step of instruct; let i = index">
+    {{i+1}}:
+    <mat-form-field
+        hideRequiredMarker="never"
+        floatLabel="never">
+      <input matInput placeholder="Instuction" required>
+    </mat-form-field>
+  </div>
+
+  <br/>
+  <button #submitButton mat-raised-button color="primary" (click)="addStep()">Add Instruction</button>
+  <button #submitButton mat-raised-button color="primary" (click)="remStep()">Remove Instruction</button>
 </div>
 
 <div style="text-align:center">
+  <br/>
   <button #submitButton mat-raised-button color="primary">Submit</button>
   <button #submitButton mat-raised-button color="primary" (click)="goBack()">Go Back</button>
 </div>
