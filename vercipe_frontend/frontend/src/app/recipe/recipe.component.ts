@@ -16,9 +16,7 @@ export class RecipeComponent implements OnInit {
 	version:Number = null
 	created_at:Date = null
 
-  constructor(private service: RecipeService) {
-  	// this.testService()
-  }
+  constructor(private service: RecipeService) { }
 
   ngOnInit() {
   	this.getRecipeById('5a9df6c3d0d4270012f1b06b')
@@ -36,7 +34,6 @@ export class RecipeComponent implements OnInit {
 
   testService() {
   	this.service.testService().subscribe(data => {
-  		// console.log(data['msg'])
   		this.title = data['msg'];
   	})
   }
