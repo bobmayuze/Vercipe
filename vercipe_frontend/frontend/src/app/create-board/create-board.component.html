@@ -1,16 +1,22 @@
-<div style="text-align:center">
-  <p>
-    Welcome to Vercipe
-  </p>
-</div>
+<div style="min-height: 35vh; margin-top: 5%">
+  <div style="text-align:center">
+    <h1>Create Your Own Recipe</h1>
+  </div>
 
-<div style="text-align:center">
-  <mat-form-field>
-    <input matInput placeholder="Find Recipes">
-  </mat-form-field>
-</div>
+  <div style="text-align:center">
+    <mat-form-field style="width:60%;">
+      <input matInput placeholder="Title">
+    </mat-form-field>
 
-<div style="text-align:center">
-  <button #submitButton mat-raised-button color="primary">Submit</button>
-  <button #submitButton mat-raised-button color="primary" (click)="goBack()">Go Back</button>
+    <mat-form-field style="width:60%;">
+      <input matInput placeholder="Creator">
+    </mat-form-field>
+  </div>
+
+  <div style="text-align:center">
+    <button #submitButton mat-raised-button color="primary">Submit</button>
+    <button #submitButton mat-raised-button color="primary" (click)="goBack()">Go Back</button>
+  </div>
+
+
 </div>
