@@ -3,7 +3,17 @@ footer {
   color: white;
   background: #3f51b5;
   margin-top: 15em;
-  height: 15em;
   position: sticky;
   top: 100%;
+}
+
+.mat-toolbar {
+  font-size: 1em;
+  
+}
+
+.fill-remaining-space {
+  /* This fills the remaining space, by using flexbox. 
+     Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
 }

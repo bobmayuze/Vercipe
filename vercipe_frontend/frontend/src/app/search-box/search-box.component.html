@@ -1,18 +1,18 @@
-<div style="text-align:center">
-  <p>
-    search-box works!
-  </p>
-  <mat-slider min="1" max="5" step="0.5" value="1.5"></mat-slider>
-</div>
+<div style="height: 35vh; margin-top: 5%">
+  <div style="text-align:center">
+    <h1>VERCIPE</h1>
+    <!-- <mat-slider min="1" max="5" step="0.5" value="1.5"></mat-slider> -->
+  </div>
 
-<div style="text-align:center">
-  <mat-form-field>
-    <input matInput placeholder="Type Here">
-  </mat-form-field>
-  
-</div>
+  <div #searchBox style="text-align:center; margin-bottom: 1%;margin-top: 5%">
+    <mat-form-field style="width:60%;">
+      <input matInput placeholder="Search Recipes">
+    </mat-form-field>
+    
+  </div>
 
-<div #searchDiv style="text-align:center">
-  <button #searchButton mat-raised-button color="primary">Search</button>
-  <button #createButton mat-raised-button color="primary" (click)="createNewRecipe()">Create My Own</button>
+  <div style="text-align:center">
+    <button #searchButton mat-raised-button color="primary">Search</button>
+    <button #createButton mat-raised-button color="primary" (click)="createNewRecipe()">Create Recipe</button>
+  </div>
 </div>
