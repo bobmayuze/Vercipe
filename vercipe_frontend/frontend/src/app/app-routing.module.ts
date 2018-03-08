@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { SearchBoxComponent } from './search-box/search-box.component';
 import { CreateBoardComponent } from './create-board/create-board.component';
 import { DetailBoardComponent } from './detail-board/detail-board.component';
+import { LogInComponent } from './user/log-in/log-in.component';
+import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { RecipeListComponent } from './recipe-list/recipe-list.component';
 
 const routes: Routes = [
@@ -12,7 +14,9 @@ const routes: Routes = [
   { path: 'dashboard', component: SearchBoxComponent },
   { path: 'create', component: CreateBoardComponent },
   { path: 'detail', component: DetailBoardComponent },
-  { path: 'all', component: RecipeListComponent }
+  { path: 'login', component: LogInComponent },
+  { path: 'signup', component: SignUpComponent },
+  { path: 'all', component: RecipeListComponent },
   // { path: 'search', component: HeroSearchComponent },
   // { path: 'detail/:id', component: HeroDetailComponent },
   // // It routes to heros
