@@ -4,13 +4,15 @@ import { CommonModule } from '@angular/common';
 import { SearchBoxComponent } from './search-box/search-box.component';
 import { CreateBoardComponent } from './create-board/create-board.component';
 import { DetailBoardComponent } from './detail-board/detail-board.component';
+import { RecipeListComponent } from './recipe-list/recipe-list.component';
 
 const routes: Routes = [
   // Default route
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: SearchBoxComponent },
   { path: 'create', component: CreateBoardComponent },
-  { path: 'detail', component: DetailBoardComponent }
+  { path: 'detail', component: DetailBoardComponent },
+  { path: 'all', component: RecipeListComponent }
   // { path: 'search', component: HeroSearchComponent },
   // { path: 'detail/:id', component: HeroDetailComponent },
   // // It routes to heros

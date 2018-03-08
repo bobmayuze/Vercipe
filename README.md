@@ -42,7 +42,7 @@ Data Schema for a recipe
 	instructions: String,
 	created_at: Unix Timestamp,
 	version: Int,
-	previous_version: Int
+	previous_version: String
 }
 
 ```
