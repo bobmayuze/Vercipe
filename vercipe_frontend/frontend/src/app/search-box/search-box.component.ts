@@ -10,6 +10,15 @@ export class SearchBoxComponent implements OnInit {
 
   constructor(private router: Router) { }
 
+  getResults = () => {
+    this.router.navigateByUrl('/recipes');
+  }
+
+  getResultsByTitle = (title: string) => {
+    console.log(`Getting info about ${title}`);
+    this.router.navigateByUrl(`/recipes/${title}`);
+  }
+
   createNewRecipe = () => {
     this.router.navigateByUrl('/create');
   }

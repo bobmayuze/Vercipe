@@ -16,11 +16,8 @@ const routes: Routes = [
   { path: 'detail', component: DetailBoardComponent },
   { path: 'login', component: LogInComponent },
   { path: 'signup', component: SignUpComponent },
-  { path: 'all', component: RecipeListComponent },
-  // { path: 'search', component: HeroSearchComponent },
-  // { path: 'detail/:id', component: HeroDetailComponent },
-  // // It routes to heros
-  // { path: 'heroes', component: HeroesComponent }
+  { path: 'recipes', component: RecipeListComponent },
+  { path: 'recipes/:title', component: RecipeListComponent },
 ];
 
 @NgModule({

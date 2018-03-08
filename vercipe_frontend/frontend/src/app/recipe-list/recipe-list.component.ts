@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+
 import { RecipeService } from '../recipe.service';
 import { Recipe } from '../recipe';
 
@@ -10,14 +13,24 @@ import { Recipe } from '../recipe';
 export class RecipeListComponent implements OnInit {
 
   constructor(
-    private recipeSevice: RecipeService
+    private recipeSevice: RecipeService,
+    private route: ActivatedRoute,
+    private location: Location
   ) { }
 
   recipes = null;
 
   getRecipes(): void {
-    this.recipeSevice.getAllRecipes()
-      .subscribe(recipes => this.recipes = recipes);
+    const keyWord: string = this.route.snapshot.paramMap.get('title');
+    if (keyWord === ``) {
+      this.recipeSevice.getAllRecipes()
+        .subscribe(recipes => this.recipes = recipes);
+    } else {
+      console.log(`We need ${keyWord}`);
+      this.recipeSevice.getRecipeByTitle(keyWord)
+        .subscribe(recipes => this.recipes = recipes);
+    }
+
   }
 
   getRecipeDetail(content: string): void {
