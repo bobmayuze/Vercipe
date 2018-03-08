@@ -23,7 +23,7 @@ export class RecipeListComponent implements OnInit {
   getRecipes(): void {
     const keyWord: string = this.route.snapshot.paramMap.get('title');
     if (keyWord === null) {
-      this.recipeSevice.getAllRecipes()
+      this.recipeSevice.getRecipesAll()
         .subscribe(recipes => this.recipes = recipes);
     } else {
       console.log(`We need ${keyWord}`);
