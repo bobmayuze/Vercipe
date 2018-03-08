@@ -1,6 +1,7 @@
 .recipes {
     margin-bottom: 1vh;
     padding: 1em;
-    width: 45%;
+    max-width: 600px;
+    /* width: 45%; */
     margin: auto;
 }

@@ -22,7 +22,7 @@ export class RecipeListComponent implements OnInit {
 
   getRecipes(): void {
     const keyWord: string = this.route.snapshot.paramMap.get('title');
-    if (keyWord === ``) {
+    if (keyWord === null) {
       this.recipeSevice.getAllRecipes()
         .subscribe(recipes => this.recipes = recipes);
     } else {
