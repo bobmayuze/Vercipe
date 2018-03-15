@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
+import { RecipeService } from '../recipe.service';
 
 @Component({
   selector: 'app-create-board',
@@ -8,9 +9,9 @@ import { Location } from '@angular/common';
 })
 export class CreateBoardComponent implements OnInit {
 
-  instruct: any[] = ["test1", "test2"];
+  instruct: any[] = [`test1`, `test2`];
 
-  materials: any[] = ["mat1", "mat2"];
+  materials: any[] = [`mat1`, `mat2`];
 
   /*
   instruct: any[] = [
@@ -24,7 +25,8 @@ export class CreateBoardComponent implements OnInit {
   */
 
   constructor(
-    private location: Location
+    private location: Location,
+    private recipeService: RecipeService
   ) { }
 
   goBack(): void {
@@ -35,7 +37,7 @@ export class CreateBoardComponent implements OnInit {
   }
 
   addStep(): void {
-    this.instruct.push("test3");
+    this.instruct.push(`test3`);
   }
 
   remStep(): void {
@@ -43,11 +45,13 @@ export class CreateBoardComponent implements OnInit {
   }
 
   addMat(): void {
-    this.materials.push("mat3");
+    this.materials.push(`mat3`);
   }
 
   remMat(): void {
     this.materials.pop();
   }
+
+
 
 }

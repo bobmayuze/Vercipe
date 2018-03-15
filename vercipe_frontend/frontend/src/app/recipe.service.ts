@@ -38,7 +38,7 @@ export class RecipeService {
   }
 
   getRecipeByTitle(title) {
-    return this.http.post(this.url + 'recipes/byTitle', {title: title});
+    return this.http.post<Recipe[]>(this.url + 'recipes/byTitle', {title: title});
   }
 
   deleteRecipe(id) {
