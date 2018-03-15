@@ -51,6 +51,7 @@ import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { LogInComponent } from './user/log-in/log-in.component';
 import { DashboardComponent } from './user/dashboard/dashboard.component';
 import { PageNotFoundComponent } from './common/page-not-found/page-not-found.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -102,7 +103,8 @@ import { PageNotFoundComponent } from './common/page-not-found/page-not-found.co
     MatToolbarModule,
     MatTooltipModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [RecipeService],
   bootstrap: [AppComponent]

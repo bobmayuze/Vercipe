@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-create-board',
@@ -8,9 +9,13 @@ import { Location } from '@angular/common';
 })
 export class CreateBoardComponent implements OnInit {
 
-  instruct: any[] = ["test1", "test2"];
+  title = "";
+  name = "";
+  email = "";
+  
+  instructs: String[] = [""];
 
-  materials: any[] = ["mat1", "mat2"];
+  materials: String[] = [""];
 
   /*
   instruct: any[] = [
@@ -24,8 +29,13 @@ export class CreateBoardComponent implements OnInit {
   */
 
   constructor(
-    private location: Location
+    private location: Location,
+    private http: HttpClient
   ) { }
+
+  trackByIndex(index: number, obj: any): any{
+    return index;
+  }
 
   goBack(): void {
     this.location.back();
@@ -35,19 +45,64 @@ export class CreateBoardComponent implements OnInit {
   }
 
   addStep(): void {
-    this.instruct.push("test3");
+    this.instructs.push("");
   }
 
   remStep(): void {
-    this.instruct.pop();
+    this.instructs.pop();
   }
 
   addMat(): void {
-    this.materials.push("mat3");
+    this.materials.push("");
+    //console.log(this.title);
+    //console.log(this.name);
+    //console.log(this.email);
+
+    //console.log(this.materials);
+    //console.log(this.instructs);
   }
 
   remMat(): void {
     this.materials.pop();
+  }
+
+  submit(): void{
+    //var send: any[] = [this.title, this.name, this.email, this.materials, this.instructs];
+    var send = '{';
+    send += '"title": ' + '"' + this.title + '",'
+    send += '"name": ' + '"' + this.name + '",'
+    send += '"email": ' + '"' + this.email + '",'
+    send += '"materials": ['
+    for (var i = 0; i<this.materials.length; i++){
+      send += '"' + this.materials[i] + '"';
+      if (i+1 != this.materials.length){
+        send += ',';
+      }
+    }
+    send += '],'
+
+    send += '"instructions": ['
+    for (var i = 0; i<this.instructs.length; i++){
+      send += '"' + this.instructs[i] + '"';
+      if (i+1 != this.instructs.length){
+        send += ',';
+      }
+    }
+    send += ']'
+    send += "}";
+    send = JSON.parse(send);
+    //console.log(this.location["_platformStrategy"]["_platformLocation"]["location"]["origin"]);
+    //var loc = this.location["_platformStrategy"]["_platformLocation"]["location"]["origin"];
+    this.http.post('http://localhost:3000/newRecipe', send).subscribe(
+      data => {
+        alert('Submitted');
+      },
+      error => {
+        console.log(JSON.stringify(error.json()));
+      }
+    )
+    //console.log(send);
+    //alert("Submitted");
   }
 
 }
