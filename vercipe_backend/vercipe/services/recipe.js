@@ -47,8 +47,12 @@ module.exports.findRecipeById = async (id)=>{
 }
 
 module.exports.findRecipeByTitle = async(title)=>{
+    await console.log("Finding related to", title);
+    
     var target;
-    await recipe.find({ "title": { $regex: title } }, (err, result) => {
+    await recipe.find({
+        "title": { $regex: ".*" + title + ".*", $options: "gi" }
+    }, (err, result) => {
         target = result;
     });
     return target;

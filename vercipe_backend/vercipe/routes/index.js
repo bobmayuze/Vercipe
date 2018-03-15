@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Models = require('../models/models');
-var MongoClient = require('mongodb').MongoClient;
+// var MongoClient = require('mongodb').MongoClient;
 var ObjectID = require('mongodb').ObjectID;
 var mongoose = require('mongoose');
 var recipe = Models.recipeModel;
@@ -60,7 +60,7 @@ router.post("/recipes/byTitle", async(req, res)=>{
 // [7] Delete recipe by recipe's ObjectId
 router.delete("/recipes",(req, res)=>{
   console.log("DELETE ONE ");
-  recipe.findByIdAndRemove(req.body.id, (err, target_recipe)=>{
+  recipe.findByIdAndRemove(req.options.params.id, (err, target_recipe)=>{
     res.send(target_recipe);
   })
 });
