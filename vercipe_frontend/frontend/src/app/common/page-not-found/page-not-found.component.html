@@ -1,3 +1,50 @@
-<p>
-  page-not-found works!
-</p>
+<div nz-row [nzType]="flex" [nzJustify]="center">
+  <div nz-col [nzSpan]="4"></div>
+  <div nz-col [nzSpan]="16">
+    <nz-steps [(nzCurrent)]="current">
+      <nz-step [nzTitle]="'Finished'" [nzDescription]="'This is a description.'"></nz-step>
+      <nz-step [nzTitle]="'In Progress'" [nzDescription]="nzDescription">
+        <ng-template #nzDescription>
+          <p>This is a description.</p>
+          <nz-progress [ngModel]="30" [nzStrokeWidth]="5"></nz-progress>
+        </ng-template>
+      </nz-step>
+      <nz-step [nzTitle]="'Waiting'" [nzDescription]="'This is a description.'"></nz-step>
+    </nz-steps>
+  </div>
+  <div nz-col [nzSpan]="4"></div>
+</div>
+
+    <div nz-row>
+      <div nz-col [nzSpan]="12">
+        col-12
+      </div>
+      <div nz-col [nzSpan]="12">
+        col-12
+      </div>
+    </div>
+    <div nz-row>
+      <div nz-col [nzSpan]="8">
+        col-8
+      </div>
+      <div nz-col [nzSpan]="8">
+        col-8
+      </div>
+      <div nz-col [nzSpan]="8">
+        col-8
+      </div>
+    </div>
+    <div nz-row>
+      <div nz-col [nzSpan]="6">
+        col-6
+      </div>
+      <div nz-col [nzSpan]="6">
+        col-6
+      </div>
+      <div nz-col [nzSpan]="6">
+        col-6
+      </div>
+      <div nz-col [nzSpan]="6">
+        col-6
+      </div>
+    </div>`
