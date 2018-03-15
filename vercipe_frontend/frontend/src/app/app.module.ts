@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatAutocompleteModule,
@@ -35,6 +36,8 @@ import {
   MatToolbarModule,
   MatTooltipModule,
 } from '@angular/material';
+
+import { NgZorroAntdModule } from 'ng-zorro-antd';
 
 import { AppComponent } from './app.component';
 import { SearchBoxComponent } from './search-box/search-box.component';
@@ -102,7 +105,9 @@ import { PageNotFoundComponent } from './common/page-not-found/page-not-found.co
     MatToolbarModule,
     MatTooltipModule,
     AppRoutingModule,
-    HttpClientModule
+    FormsModule,
+    HttpClientModule,
+    NgZorroAntdModule.forRoot()
   ],
   providers: [RecipeService],
   bootstrap: [AppComponent]

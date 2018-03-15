@@ -7,6 +7,7 @@ import { DetailBoardComponent } from './detail-board/detail-board.component';
 import { LogInComponent } from './user/log-in/log-in.component';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { RecipeListComponent } from './recipe-list/recipe-list.component';
+import { PageNotFoundComponent } from './common/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   // Default route
@@ -18,6 +19,8 @@ const routes: Routes = [
   { path: 'signup', component: SignUpComponent },
   { path: 'recipes', component: RecipeListComponent },
   { path: 'recipes/:title', component: RecipeListComponent },
+  { path: '404', component: PageNotFoundComponent },
+  // { path: '/*path', redirectTo: ['NotFound'] }
 ];
 
 @NgModule({
