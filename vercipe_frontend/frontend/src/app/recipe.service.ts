@@ -13,8 +13,8 @@ const httpOptions = {
 @Injectable()
 export class RecipeService {
   private url = 'http://localhost:3000/';
-  private data = ``;
-  private err = ``;
+  private data: string;
+  private err: string;
 
   constructor(private http: HttpClient) { }
 

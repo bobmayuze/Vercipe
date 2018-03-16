@@ -10,13 +10,12 @@ import { RecipeService } from '../recipe.service';
 })
 export class CreateBoardComponent implements OnInit {
 
-  title = ``;
-  name = ``;
-  email = ``;
+  private title: string;
+  private name: string;
+  private email: string;
   
-  instructs: string[] = [``];
-
-  materials: string[] = [``];
+  private instructs: string[] = [``];
+  private materials: string[] = [``];
 
   constructor(
     private location: Location,
@@ -50,15 +49,14 @@ export class CreateBoardComponent implements OnInit {
     this.materials.pop();
   }
 
-  submit(): void{
-    var send = JSON.parse(`{"title": "", "name": "", "email": "",\
-                          "materials": [], "instructions": []}`);
-    send[`title`] = this.title;
-    send[`name`] = this.name;
-    send[`email`] = this.email;
-    send[`materials`] = this.materials;
-    send[`instructions`] = this.instructs;
-
+  submit(): void{   
+    const send: any = {};
+    send.title = this.title;
+    send.name = this.name;
+    send.email = this.email;
+    send.materials = this.materials;
+    send.instructions = this.instructs;
+      
     this.recipeSevice.createRecipe(send);
 
     alert("Submitted");
