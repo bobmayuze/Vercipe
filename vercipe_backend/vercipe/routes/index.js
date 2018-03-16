@@ -89,8 +89,21 @@ router.post("/recipes/previous", async(req, res) => {
   var current_recipe = await service.findRecipeById(req.body.id);
   console.log("Previous version is ", current_recipe.previous_version);
   var previous_version_recipe = await service.findRecipeById(current_recipe.previous_version);
-  res.send(previous_version_recipe);
+  res.send({"previous_version_recipe" : previous_version_recipe});
 });
 
+// [10] Get all pervious versions by id
+router.post("/recipes/previous/all", async (req, res) => {
+  console.log(req.body.id);
+  var versions = [];
+  var current_recipe = await service.findRecipeById(req.body.id);
+  versions.push(current_recipe.previous_version);
+  while (current_recipe.previous_version != "None") {
+    var previous_version_recipe = await service.findRecipeById(current_recipe.previous_version);
+    current_recipe = previous_version_recipe;
+    versions.push(current_recipe.previous_version);
+  }
+  res.send({"versions" : versions});
+});
 
 module.exports = router;
