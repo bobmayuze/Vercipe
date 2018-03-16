@@ -77,3 +77,17 @@ module.exports.forkByRecipe = async(originalRecipe, user=null)=>{
     });
     return flag;
 };
+
+
+
+// module.exports.findNextVersionByRecipeId = async(current_id) => {
+
+// }
+
+module.exports.findPreviousVersionByRecipeId = async (current_id) => {
+    console.log("Are you looking for ^_^",current_id);
+    // var current_recipe = await findRecipeById(current_id);
+    console.log(current_recipe);
+    
+    return
+}
