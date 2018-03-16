@@ -1,10 +1,10 @@
 .git
 # build tools
 # ... i don't know.
-node_modules
-node_modules/
-**/node_modules
-*/node_modules
-**/node_modules/
-*/node_modules/
+# node_modules
+# node_modules/
+# **/node_modules
+# */node_modules
+# **/node_modules/
+# */node_modules/
 dist

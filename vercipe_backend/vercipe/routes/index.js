@@ -21,7 +21,7 @@ router.get('/', async(req, res, next)=>{
   console.log('before wait', new Date());
   await wait(5 * 1000);
   console.log('after wait', new Date())
-  res.send({"msg" : 'hello world'});
+  res.send({"msg" : 'hello world2'});
 });
 
 // [2] Create a new recipe
@@ -65,13 +65,11 @@ router.delete("/recipes",(req, res)=>{
   })
 });
 
-// [8] Clone a recipe
+// [8] Clone a recipe from one recipe
 router.post("/recipes/forkById", async(req, res)=>{
   const thisUser = req.session.user;
   if (thisUser) {
-    // console.log("User session: ",req.session.user);
     const originalRecipe = await service.findRecipeById(mongoose.Types.ObjectId(req.body.id));
-    // console.log("We are cloning", originalRecipe);
     var flag = await service.forkByRecipe(originalRecipe, thisUser);
     if (flag) {
       res.send("Success");
@@ -85,5 +83,27 @@ router.post("/recipes/forkById", async(req, res)=>{
 
 })
 
+// [9] Get Previous version by ID
+router.post("/recipes/previous", async(req, res) => {
+  console.log(req.body.id);
+  var current_recipe = await service.findRecipeById(req.body.id);
+  console.log("Previous version is ", current_recipe.previous_version);
+  var previous_version_recipe = await service.findRecipeById(current_recipe.previous_version);
+  res.send({"previous_version_recipe" : previous_version_recipe});
+});
+
+// [10] Get all pervious versions by id
+router.post("/recipes/previous/all", async (req, res) => {
+  console.log(req.body.id);
+  var versions = [];
+  var current_recipe = await service.findRecipeById(req.body.id);
+  versions.push(current_recipe.previous_version);
+  while (current_recipe.previous_version != "None") {
+    var previous_version_recipe = await service.findRecipeById(current_recipe.previous_version);
+    current_recipe = previous_version_recipe;
+    versions.push(current_recipe.previous_version);
+  }
+  res.send({"versions" : versions});
+});
 
 module.exports = router;

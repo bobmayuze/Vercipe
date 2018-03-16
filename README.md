@@ -66,11 +66,11 @@ Endpoint: POST /newRecipe
 Authorization: none
 Request Body: 
 {
-	newRecipe.title: string
-    newRecipe.creator: string
-    newRecipe.materials: array of string
-    newRecipe.version: number
-    newRecipe.previous_version: ObjectId
+    title: string
+    creator: string
+    materials: array of string
+    version: number
+    previous_version: ObjectId
 } 
 Response: 200 JSON object, {"status" : 'success'}
 ```
@@ -121,12 +121,38 @@ Endpoint: POST /recipes/forkById
 Authorization: Log in as user
 Request Body: 
 {
-    newRecipe.title: String
-    newRecipe.materials: [String]
-    newRecipe.creator: String
+    title: String
+    materials: [String]
+    creator: String
 }
 Response: 200, if success
 ```
+
+#### [9] Get Previous Recipe Json Object of based on ID
+```
+Endpoin: POST /recipe/previous
+Authorization: Null
+Request Body:
+{
+    "id": string
+}
+Response: 200, if success
+```
+
+#### [10] Get IDs of all previous versions of a recipe in most recent to oldest order
+```
+Endpoin: POST /recipes/previous/all
+Authorization: Null
+Request Body:
+{
+    "id": string
+}
+Response: 200, if success
+{
+    "versions": [string]
+}
+```
+
 
 ### User Auth : /users
 
