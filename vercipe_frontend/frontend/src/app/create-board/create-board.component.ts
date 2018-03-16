@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { RecipeService } from '../recipe.service';
 
 @Component({
   selector: 'app-create-board',
@@ -9,28 +10,17 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CreateBoardComponent implements OnInit {
 
-  title = "";
-  name = "";
-  email = "";
+  title = ``;
+  name = ``;
+  email = ``;
   
-  instructs: String[] = [""];
+  instructs: string[] = [``];
 
-  materials: String[] = [""];
-
-  /*
-  instruct: any[] = [
-    {
-      "name": "Douglas  Pace"
-    },
-    {
-      "name": "Cook  Tyson"
-    }
-  ];
-  */
+  materials: string[] = [``];
 
   constructor(
     private location: Location,
-    private http: HttpClient
+    private recipeSevice: RecipeService
   ) { }
 
   trackByIndex(index: number, obj: any): any{
@@ -45,7 +35,7 @@ export class CreateBoardComponent implements OnInit {
   }
 
   addStep(): void {
-    this.instructs.push("");
+    this.instructs.push(``);
   }
 
   remStep(): void {
@@ -53,13 +43,7 @@ export class CreateBoardComponent implements OnInit {
   }
 
   addMat(): void {
-    this.materials.push("");
-    //console.log(this.title);
-    //console.log(this.name);
-    //console.log(this.email);
-
-    //console.log(this.materials);
-    //console.log(this.instructs);
+    this.materials.push(``);
   }
 
   remMat(): void {
@@ -67,42 +51,17 @@ export class CreateBoardComponent implements OnInit {
   }
 
   submit(): void{
-    //var send: any[] = [this.title, this.name, this.email, this.materials, this.instructs];
-    var send = '{';
-    send += '"title": ' + '"' + this.title + '",'
-    send += '"name": ' + '"' + this.name + '",'
-    send += '"email": ' + '"' + this.email + '",'
-    send += '"materials": ['
-    for (var i = 0; i<this.materials.length; i++){
-      send += '"' + this.materials[i] + '"';
-      if (i+1 != this.materials.length){
-        send += ',';
-      }
-    }
-    send += '],'
+    var send = JSON.parse(`{"title": "", "name": "", "email": "",\
+                          "materials": [], "instructions": []}`);
+    send[`title`] = this.title;
+    send[`name`] = this.name;
+    send[`email`] = this.email;
+    send[`materials`] = this.materials;
+    send[`instructions`] = this.instructs;
 
-    send += '"instructions": ['
-    for (var i = 0; i<this.instructs.length; i++){
-      send += '"' + this.instructs[i] + '"';
-      if (i+1 != this.instructs.length){
-        send += ',';
-      }
-    }
-    send += ']'
-    send += "}";
-    send = JSON.parse(send);
-    //console.log(this.location["_platformStrategy"]["_platformLocation"]["location"]["origin"]);
-    //var loc = this.location["_platformStrategy"]["_platformLocation"]["location"]["origin"];
-    this.http.post('http://localhost:3000/newRecipe', send).subscribe(
-      data => {
-        alert('Submitted');
-      },
-      error => {
-        console.log(JSON.stringify(error.json()));
-      }
-    )
-    //console.log(send);
-    //alert("Submitted");
+    this.recipeSevice.createRecipe(send);
+
+    alert("Submitted");
   }
 
 }
