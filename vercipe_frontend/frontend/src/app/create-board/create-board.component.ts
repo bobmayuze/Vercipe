@@ -13,7 +13,7 @@ export class CreateBoardComponent implements OnInit {
   private title: string;
   private name: string;
   private email: string;
-  
+
   private instructs: string[] = [``];
   private materials: string[] = [``];
 
@@ -22,7 +22,7 @@ export class CreateBoardComponent implements OnInit {
     private recipeSevice: RecipeService
   ) { }
 
-  trackByIndex(index: number, obj: any): any{
+  trackByIndex(index: number, obj: any): any {
     return index;
   }
 
@@ -49,17 +49,17 @@ export class CreateBoardComponent implements OnInit {
     this.materials.pop();
   }
 
-  submit(): void{   
+  submit(): void {
     const send: any = {};
     send.title = this.title;
     send.name = this.name;
     send.email = this.email;
     send.materials = this.materials;
     send.instructions = this.instructs;
-      
+
     this.recipeSevice.createRecipe(send);
 
-    alert("Submitted");
+    alert(`Submitted`);
   }
 
 }
