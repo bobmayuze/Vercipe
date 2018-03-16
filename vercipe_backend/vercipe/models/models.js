@@ -18,10 +18,7 @@ var recipe = new Schema({
         default: "idiot@sandiwch.com"
     },
     materials: [String],
-    instructions: { 
-        type: String, 
-        default: "1. Grab two pieces of toast and an idiot. 2. Put the toasts on each side of the idiot. 3. Vola, you got an idiot sandwich!" 
-    },
+    instructions: [String],
     version: {
         type: Number, 
         default: 1

@@ -2,35 +2,35 @@
   <div style="text-align:center">
     <h1>Create Your Own Recipe</h1>
   </div>
+
 <div style="text-align:center">
-  
   <br/>
   <mat-form-field style="width:20%">
-    <input matInput placeholder="Title">
+    <input matInput placeholder="Title" [(ngModel)]="title">
   </mat-form-field>
   <br/>
 
   <br/>
   <mat-form-field style="width:20%">
-    <input matInput placeholder="Name">
+    <input matInput placeholder="Name" [(ngModel)]="name">
   </mat-form-field>
   <br/>
 
   <br/>
   <mat-form-field style="width:20%">
-    <input matInput placeholder="Email">
+    <input matInput placeholder="Email" [(ngModel)]="email">
   </mat-form-field>
   <br/>
   <hr style="width:55%"/>
 
   <h2>Materials:</h2>
-  <div *ngFor="let mat of materials; let i = index">
-    {{i+1}}:
+  <div *ngFor="let mat of materials; let index = index;trackBy:trackByIndex;">
+    {{index+1}}:
     <mat-form-field
         hideRequiredMarker="never"
         floatLabel="never"
         style="width:20%">
-      <input matInput placeholder="Material" required>
+      <input [(ngModel)]="materials[index]" matInput placeholder="Material" required>
     </mat-form-field>
   </div>
 
@@ -41,13 +41,13 @@
 
   <hr style="width:55%"/>
   <h2>Instructions:</h2>
-  <div *ngFor="let step of instruct; let i = index">
-    {{i+1}}:
+  <div *ngFor="let step of instructs; let index = index;trackBy:trackByIndex;x">
+    {{index+1}}:
     <mat-form-field
         hideRequiredMarker="never"
         floatLabel="never"
         style="width:20%">
-      <input matInput placeholder="Instuction" required>
+      <input [(ngModel)]="instructs[index]" matInput placeholder="Instuction" required>
     </mat-form-field>
   </div>
 
@@ -60,7 +60,7 @@
 <div style="text-align:center">
   <br/>
   <br/>
-  <button #submitButton style="width:10%; margin:0; background-color:rgb(25, 193, 25)" mat-raised-button color="primary">Submit</button>
+  <button #submitButton style="width:10%; margin:0; background-color: green" mat-raised-button color="primary" (click)="submit()">Submit</button>
   <br/>
   <br/>
   <button #submitButton style="width:10%; margin-right:.25%; background-color: red" mat-raised-button color="primary" (click)="goBack()">Go Back</button>

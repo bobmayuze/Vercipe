@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { RecipeService } from '../recipe.service';
 
 @Component({
@@ -9,25 +10,21 @@ import { RecipeService } from '../recipe.service';
 })
 export class CreateBoardComponent implements OnInit {
 
-  instruct: any[] = [`test1`, `test2`];
+  private title: string;
+  private name: string;
+  private email: string;
 
-  materials: any[] = [`mat1`, `mat2`];
-
-  /*
-  instruct: any[] = [
-    {
-      "name": "Douglas  Pace"
-    },
-    {
-      "name": "Cook  Tyson"
-    }
-  ];
-  */
+  private instructs: string[] = [``];
+  private materials: string[] = [``];
 
   constructor(
     private location: Location,
-    private recipeService: RecipeService
+    private recipeSevice: RecipeService
   ) { }
+
+  trackByIndex(index: number, obj: any): any {
+    return index;
+  }
 
   goBack(): void {
     this.location.back();
@@ -37,21 +34,32 @@ export class CreateBoardComponent implements OnInit {
   }
 
   addStep(): void {
-    this.instruct.push(`test3`);
+    this.instructs.push(``);
   }
 
   remStep(): void {
-    this.instruct.pop();
+    this.instructs.pop();
   }
 
   addMat(): void {
-    this.materials.push(`mat3`);
+    this.materials.push(``);
   }
 
   remMat(): void {
     this.materials.pop();
   }
 
+  submit(): void {
+    const send: any = {};
+    send.title = this.title;
+    send.name = this.name;
+    send.email = this.email;
+    send.materials = this.materials;
+    send.instructions = this.instructs;
 
+    this.recipeSevice.createRecipe(send);
+
+    alert(`Submitted`);
+  }
 
 }
