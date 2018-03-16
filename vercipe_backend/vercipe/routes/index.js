@@ -83,7 +83,7 @@ router.post("/recipes/forkById", async(req, res)=>{
 
 })
 
-// [9] Get Previous version
+// [9] Get Previous version by ID
 router.post("/recipes/previous", async(req, res) => {
   console.log(req.body.id);
   var current_recipe = await service.findRecipeById(req.body.id);
