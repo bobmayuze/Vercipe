@@ -39,7 +39,7 @@ Data Schema for a recipe
     creator: String,
 	creator_Email: String,
 	materials: [String],
-	instructions: String,
+	instructions: [String],
 	created_at: Unix Timestamp,
 	version: Int,
 	previous_version: String
