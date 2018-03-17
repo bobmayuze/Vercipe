@@ -26,15 +26,15 @@ router.post('/log_in', (req,res,next)=>{
 
 // [4] demo endpoint to test if user is logged in
 // dashborad for checking if used is loged in or not
-router.get('/dashboard', (req, res, next) => {
+router.post('/dashboard', (req, res, next) => {
   var login = service.checkStatus(req, res);
   if (login) {
     console.log("Welcome to Vercipeeeee");
-    res.send("Welcome to Vercipeeeee");
+    res.send({"status":"success"});
   }
   else {
     console.log("Please login first");
-    res.send("Please login first");
+    res.send({"status":"failed"});
   }
 });
 module.exports = router;

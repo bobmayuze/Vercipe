@@ -26,9 +26,9 @@ export class RecipeService {
   createRecipe(json) {
 
     return this.http.post(this.url + 'newRecipe', json).subscribe(
-          data => this.data,
-          err => this.err
-      );
+      data => this.data,
+      err => this.err
+    );
   }
 
   getRecipesAll() {

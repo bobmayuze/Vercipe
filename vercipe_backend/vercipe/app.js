@@ -25,7 +25,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
   secret: 'Idiot Sandwich',
   resave: false,
-  saveUninitialized: true
+  saveUninitialized: true,
+  duration: 30 * 60 * 1000,
+  activeDuration: 5 * 60 * 1000,
+
 }));
 
 // CROS request handle
