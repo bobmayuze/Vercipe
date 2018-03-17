@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatAutocompleteModule,
@@ -45,7 +45,10 @@ import { AppRoutingModule } from './/app-routing.module';
 import { CreateBoardComponent } from './create-board/create-board.component';
 
 import { HttpClientModule } from '@angular/common/http';
+
 import { RecipeService } from './recipe.service';
+import { UserService } from './user/user.service';
+
 import { DetailBoardComponent } from './detail-board/detail-board.component';
 import { HeaderComponent } from './common/header/header.component';
 import { FooterComponent } from './common/footer/footer.component';
@@ -106,10 +109,14 @@ import { PageNotFoundComponent } from './common/page-not-found/page-not-found.co
     MatTooltipModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     NgZorroAntdModule.forRoot()
   ],
-  providers: [RecipeService],
+  providers: [
+    RecipeService,
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
