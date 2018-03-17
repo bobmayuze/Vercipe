@@ -42,13 +42,13 @@ module.exports.login = (req, res)=>{
         console.log("Login successfully as", username);
         console.log(result);
         req.session.user = result;
-        return res.status(200).send({"msg":"Success"});
+        return res.status(200).send(result);
         
     });
 }
 
 module.exports.checkStatus = (req,res)=>{
-    if(!req.session.user){
+    if(!req.body.user){
         return false;
         return res.status(401).send();
     }
