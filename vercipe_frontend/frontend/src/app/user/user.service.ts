@@ -15,6 +15,8 @@ export class UserService {
   // private adminUser: User;
   private url = 'http://localhost:3000/users/';
   private result: any = `Not Initialized`;
+  private data: string;
+  private err: string;
   constructor(private http: HttpClient) { }
 
   signIn(user) {
@@ -59,6 +61,13 @@ export class UserService {
       console.log(`2`);
     }, 1000);
     console.log(`3`);
+  }
+
+  signUp(json) {
+    return this.http.post(this.url + 'sign_up', json).subscribe(
+      data => this.data,
+      err => this.err
+    );
   }
 
 

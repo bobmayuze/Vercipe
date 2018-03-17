@@ -3,22 +3,27 @@
     <form name="form" (ngSubmit)="signUp()">
       <div class="form-group">
         <mat-form-field style="width:20%" >
-          <input matInput placeholder="Username" name="password" required>
+          <input matInput placeholder="Username" name="username" [(ngModel)]="username" required>
         </mat-form-field>
       </div>
       <div class="form-group">
         <mat-form-field style="width:20%">
-          <input matInput placeholder="Password" name="password" required>
+          <input matInput placeholder="Password" type="password" name="password" [(ngModel)]="password" required>
         </mat-form-field>
       </div>
       <div class="form-group">      
         <mat-form-field style="width:20%">
-          <input matInput placeholder="Email" name="email">
+          <input matInput placeholder="Confirm Password" type="password" name="passwordConf" [(ngModel)]="passwordConf" required>
         </mat-form-field>
       </div>
-        <div class="form-group">
-            <button mat-raised-button color="primary">Sign Up</button>
-        </div>
+      <div class="form-group">      
+        <mat-form-field style="width:20%">
+          <input matInput placeholder="Email" name="email" [(ngModel)]="email">
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+          <button type="submit" mat-raised-button color="primary">Sign Up</button>
+      </div>
     </form>
     <br><br>
 </div>
