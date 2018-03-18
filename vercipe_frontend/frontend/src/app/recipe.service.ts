@@ -58,4 +58,8 @@ export class RecipeService {
   getAllRecipes() {
     return this.http.get<Recipe[]>(this.url + 'allRecipes');
   }
+
+  getVersionsById(targetId: string) {
+    return this.http.post(this.url + `recipes/previous/all`, { id : targetId});
+  }
 }

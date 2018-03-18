@@ -19,6 +19,7 @@ export class RecipeListComponent implements OnInit {
   ) { }
 
   recipes = null;
+  versionResult: any = {} ;
 
   getRecipes(): void {
     const keyWord: string = this.route.snapshot.paramMap.get('title');
@@ -35,6 +36,13 @@ export class RecipeListComponent implements OnInit {
 
   getRecipeDetail(content: string): void {
     console.log(`Getting....${content}`);
+    this.recipeSevice.getVersionsById(content)
+    .subscribe(
+      result => {
+        this.versionResult = result;
+        console.log(result);
+      }
+    );
   }
 
   ngOnInit() {
