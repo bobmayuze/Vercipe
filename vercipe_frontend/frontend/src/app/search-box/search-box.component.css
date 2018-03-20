@@ -1,10 +1,14 @@
 #searchBox {
-    /* height: 100%; */
-    /*background-color: brown;*/
-    text-align:center;
+  text-align:center;
+  position: relative;
+  margin-top: 5em;
 }
 
 h1, button, label {
-	font-family: 'Source Sans Pro', 'sans-serif';
+	font-family: 'Ubunto Mono', monospace;
+}
+
+.button-row {
+	text-align:center
 }
 

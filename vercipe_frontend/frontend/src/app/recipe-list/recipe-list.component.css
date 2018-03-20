@@ -1,7 +1,27 @@
-.recipes {
-    margin-bottom: 1vh;
-    padding: 1em;
-    max-width: 600px;
-    /* width: 45%; */
-    margin: auto;
+#container {
+  display: block;
+  position:absolute;
+  height:auto;
+  bottom:0;
+  top:0;
+  left:0;
+  right:0;
+  margin-top:4.25em;
+  margin-bottom:4.25em;
+  margin-right:0;
+  margin-left:0;
+}
+
+#recipes {
+  height: 100%;
+  
+  /*width: 100%;*/
+  margin-left: 1em;
+  margin-right: 1em;
+  overflow-x:scroll;
+  font-family: 'Ubunto Mono', monospace;
+}
+
+mat-card {
+	margin-bottom: .25em;
 }
