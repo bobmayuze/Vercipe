@@ -4,6 +4,10 @@
   margin-top: 5em;
 }
 
+h1 {
+	text-align: center;
+}
+
 h1, button, label {
 	font-family: 'Ubunto Mono', monospace;
 }

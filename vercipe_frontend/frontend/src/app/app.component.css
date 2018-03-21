@@ -1,0 +1,28 @@
+/*
+To do:
+	- Adjust router to have recipelist on righthand side 
+	- Searchbox on top or left
+*/
+#header {
+	margin-bottom: 3em;
+}
+
+/*#dashboard {
+	margin-top: 5em;
+	margin-bottom: 4em;
+	width: 100%;
+	justify-content: center;
+}*/
+
+/*#search {
+	display: inline-block;
+}*/
+
+#router {
+	margin-top: 5em;
+  width: 100%;
+}
+
+app-footer {
+	margin-top: 3em;
+}

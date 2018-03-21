@@ -1,12 +1,13 @@
 mat-toolbar {
-  padding: .05em;
-  color: white;
-  background: #3f51b5;
-  width: 100%;
   position:fixed;
   top:0em;
-  left: 0em;
-  padding: 1em;
+  padding: .05em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  width: 100%;
+  height: 3em;
+  color: white;
+  background: #3f51b5;
 }
 
 h1 {
