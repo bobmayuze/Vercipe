@@ -26,6 +26,7 @@ module.exports.createByReq = (req, res)=>{
     var newRecipe = new recipe;
     newRecipe.title = req.body.title || "idiot sandwich";
     newRecipe.creator = req.body.creator || "Gordon Ramsay";
+    newRecipe.creator_email = req.body.creator_email || "idiot@sandwich.com";
     newRecipe.instructions = req.body.instructions || ["A", "B", "C"];
     newRecipe.materials = req.body.materials || ["A", "B", "C"];
     newRecipe.version = req.body.version || 1;
