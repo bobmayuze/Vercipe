@@ -13,19 +13,20 @@ It works
 
   
 <div class="created" >
-  <h2>Created Recipes</h2>
+  <h1>Created Recipes</h1>
+  <br/>
   <mat-accordion>
     <mat-expansion-panel *ngFor="let recipe of recipes; let index = index;" >
         <mat-expansion-panel-header>
-          <mat-card-title>
+          <mat-card-title style="margin-top:0.5em">
              {{ recipe.title }}
           </mat-card-title>
         </mat-expansion-panel-header>
-        <p>Materials</p>
+        <p class="section">Materials</p>
         <ul>
           <li *ngFor="let mat of recipe.materials">{{ mat }}</li>
         </ul>
-        <p>Instructions</p>
+        <p class="section">Instructions</p>
         <ol>
           <li *ngFor="let inst of recipe.instructions">{{ inst }}</li>
         </ol>

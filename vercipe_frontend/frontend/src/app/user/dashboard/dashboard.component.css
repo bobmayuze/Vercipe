@@ -7,7 +7,7 @@
 .created {
   layout: auto;
   layout-align: center;
-  width: 60%;
+  width: 55%;
   margin: auto;
 }
 
@@ -20,4 +20,23 @@
   border-radius: 1em;
   padding: 1em;
   overflow: hidden;
+}
+
+ul {
+  list-style: initial;
+  margin: initial;
+  margin-left: 15px;
+  
+}
+
+ol {
+  list-style-type: decimal;
+  margin: initial;
+  margin-left: 15px;
+  
+}
+
+.section {
+  font-weight: bold;
+  margin-bottom: .25em;
 }
