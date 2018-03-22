@@ -1,61 +1,29 @@
 <mat-card id="createBoard">
   <mat-card-content>
     <mat-form-field>
-      <input matInput placeholder="Title">
+      <input matInput placeholder="title" [(ngModel)]="title"/>
     </mat-form-field>
 
-    <hr/>
+    <h3>Materials:</h3>
+    <div *ngFor="let mat of materials; let index=index;">
+      <mat-form-field>
+        <input matInput placeholder="item {{index+1}}" [(ngModel)]="materials[index]"
+         (keyup.enter)="addMat()"/>
+      </mat-form-field>
+    </div>
 
-    <mat-form-field>
-      <input matInput placeholder="Name">
-    </mat-form-field>
+    <h3>Instructions:</h3>
+    <div *ngFor="let step of instructs; let index=index;">
+      <mat-form-field>
+        <input matInput placeholder="step {{index+1}}" [(ngModel)]="instructs[index]"
+         (keyup.enter)="addStep()"/>
+      </mat-form-field>
+    </div>
 
-    <hr/>
+    <div>
+      <button style="background-color:green;" mat-raised-button color="primary"(click)="submit()">create</button>
+      <button style="background-color:red;" mat-raised-button color="primary" (click)="goBack()">delete</button>
+    </div>
 
-    <mat-form-field>
-      <input matInput placeholder="Email">
-    </mat-form-field>
   </mat-card-content>
 </mat-card>
-<!-- </mat-grid-list> -->
-
-  <!-- <mat-card> -->
-<!--     <hr style="width:55%"/>
-
-    <h2>Materials:</h2>
-    <div *ngFor="let mat of materials; let i = index">
-      {{i+1}}:
-      <mat-form-field hideRequiredMarker="never" floatLabel="never">
-        <input matInput placeholder="Material" required>
-      </mat-form-field>
-    </div> -->
-  <!-- </mat-card> -->
-  <!-- <mat-card> -->
-    <!-- <button #submitButton mat-raised-button color="primary" (click)="addMat()">Add</button>
-    <button #submitButton mat-raised-button color="primary" (click)="remMat()">Remove</button>
-    <br/>
-    <br/> -->
-
-   <!--  <hr style="width:55%"/>
-    <h2>Instructions:</h2>
-    <mat-card *ngFor="let step of instruct; let i = index">
-      {{i+1}}:
-      <mat-form-field hideRequiredMarker="never" floatLabel="never">
-        <input matInput placeholder="Instuction" required/>
-      </mat-form-field>
-    </mat-card>
-
-    <button #submitButton mat-raised-button color="primary" (click)="addStep()">Add</button>
-    <button #submitButton mat-raised-button color="primary" (click)="remStep()">Remove</button>
-  </mat-card>
-
-  <hr style="width:55%"/>
-
-    <mat-card style="text-align:center">
-      <br/>
-      <br/>
-      <button #submitButton style="width:10%; margin:0; background-color: green" mat-raised-button color="primary">Submit</button>
-      <br/>
-      <br/>
-      <button #submitButton style="width:10%; margin-right:.25%; background-color: red" mat-raised-button color="primary" (click)="goBack()">Go Back</button>
-    </mat-card> -->
