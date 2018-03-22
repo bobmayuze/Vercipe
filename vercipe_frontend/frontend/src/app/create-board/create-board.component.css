@@ -1,3 +1,10 @@
 #createBoard {
 	font-family: 'Source Sans Pro', 'sans-serif';
+	width: 100%;
+	margin: auto;
+	align-content: center;
+}
+
+hr {
+	width: 50%;
 }
