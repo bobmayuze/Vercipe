@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { RecipeService } from '../recipe.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-board',
@@ -16,7 +17,8 @@ export class CreateBoardComponent implements OnInit {
 
   constructor(
     private location: Location,
-    private recipeSevice: RecipeService
+    private recipeSevice: RecipeService,
+    private router: Router
   ) { }
 
   trackByIndex(index: number, obj: any): any {
@@ -64,11 +66,11 @@ export class CreateBoardComponent implements OnInit {
       send.materials = this.materials;
       send.instructions = this.instructs;
 
-      console.log(send);
-
       this.recipeSevice.createRecipe(send);
 
       alert(`Submitted`);
+
+      this.router.navigateByUrl('/dashboard');
     }
   }
 
