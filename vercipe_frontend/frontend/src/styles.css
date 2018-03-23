@@ -3,6 +3,20 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 @import url('https://fonts.googleapis.com/css?family=Bowlby+One+SC');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono');
 * {
-	font-family: 'Source Sans Pro', sans-serif;
+	font-family: 'Ubunto Mono', monospace;
+	box-sizing:border-box;
+  -moz-box-sizing:border-box;
+}
+
+html, body {
+	margin:0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+}
+
+app-root {
+	height: 100%;
 }

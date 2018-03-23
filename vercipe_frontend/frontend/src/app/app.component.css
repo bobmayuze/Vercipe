@@ -1,0 +1,11 @@
+#wrapper {
+	height: 100%;
+}
+
+#header, #footer {
+  height: 10%;
+}
+#content {
+  height: 80%;
+  background: pink;
+}
