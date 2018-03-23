@@ -22,7 +22,21 @@ $ ./scripts/init.sh
 $ ./scripts/init.sh 
 ```
 
-4. Vola, you are all set!
+4. Start a new terminal, and cd into vercipe_frontend/frontend folder
+
+5. Install the dependencies 
+```
+$ npm install
+```
+
+6. Make sure you [ng-cli](https://cli.angular.io/) installed, then start the frontend dev mode
+```
+$ ng serve -o
+```
+
+Your browser shoud opne a window at port 4200. If not, you can go to port 4200 to check it.
+
+
 
 ## Project proposals:
 
