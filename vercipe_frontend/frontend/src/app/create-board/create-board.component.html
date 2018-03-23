@@ -1,60 +1,29 @@
-<div id="createBoard" style="min-height: 35vh; margin-top: 5%">
-  <div style="text-align:center">
-    <h1>Create Your Own Recipe</h1>
-  </div>
-
-<div style="text-align:center">
-  <br/>
-  <mat-form-field style="width:20%">
-    <input matInput placeholder="Title" [(ngModel)]="title">
-  </mat-form-field>
-  <br/>
-
-  <hr style="width:55%; text-align:center; margin: 0 auto"/>
-
-  <h2>Materials:</h2>
-  <div *ngFor="let mat of materials; let index = index;trackBy:trackByIndex;">
-    {{index+1}}:
-    <mat-form-field
-        hideRequiredMarker="never"
-        floatLabel="never"
-        style="width:20%">
-      <input [(ngModel)]="materials[index]" matInput placeholder="Material" required>
+<mat-card id="createBoard">
+  <mat-card-content>
+    <mat-form-field>
+      <input matInput placeholder="title" [(ngModel)]="title"/>
     </mat-form-field>
-  </div>
 
-  <button #submitButton mat-raised-button color="primary" (click)="addMat()">Add</button>
-  <button #submitButton mat-raised-button color="primary" (click)="remMat()">Remove</button>
-  <br/>
-  <br/>
+    <h3>Materials:</h3>
+    <div *ngFor="let mat of materials; let index=index;">
+      <mat-form-field>
+        <input matInput placeholder="item {{index+1}}" [(ngModel)]="materials[index]"
+         (keyup.enter)="addMat()"/>
+      </mat-form-field>
+    </div>
 
-  <hr style="width:55%; text-align:center; margin: 0 auto"/>
-  <h2>Instructions:</h2>
-  <div *ngFor="let step of instructs; let index = index;trackBy:trackByIndex;x">
-    {{index+1}}:
-    <mat-form-field
-        hideRequiredMarker="never"
-        floatLabel="never"
-        style="width:20%">
-      <input [(ngModel)]="instructs[index]" matInput placeholder="Instuction" required>
-    </mat-form-field>
-  </div>
+    <h3>Instructions:</h3>
+    <div *ngFor="let step of instructs; let index=index;">
+      <mat-form-field>
+        <input matInput placeholder="step {{index+1}}" [(ngModel)]="instructs[index]"
+         (keyup.enter)="addStep()"/>
+      </mat-form-field>
+    </div>
 
-  <button #submitButton mat-raised-button color="primary" (click)="addStep()">Add</button>
-  <button #submitButton mat-raised-button color="primary" (click)="remStep()">Remove</button>
-</div>
+    <div>
+      <button style="background-color:green;" mat-raised-button color="primary"(click)="submit()">create</button>
+      <button style="background-color:red;" mat-raised-button color="primary" (click)="goBack()">delete</button>
+    </div>
 
-<hr style="width:55%; text-align:center; margin: 0 auto"/>
-
-<div style="text-align:center">
-  <br/>
-  <br/>
-  <button #submitButton style="width:10%; margin:0; background-color: green" mat-raised-button color="primary" (click)="submit()">Submit</button>
-  <br/>
-  <br/>
-  <button #submitButton style="width:10%; margin-right:.25%; background-color: red" mat-raised-button color="primary" (click)="goBack()">Go Back</button>
-</div>
-
-<div style="min-height: 10vh; margin-top: 5%">
-
-</div>
+  </mat-card-content>
+</mat-card>
