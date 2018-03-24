@@ -6,7 +6,7 @@ import { DetailBoardComponent } from './detail-board/detail-board.component';
 import { LogInComponent } from './user/log-in/log-in.component';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { RecipeListComponent } from './recipe-list/recipe-list.component';
-import { DashboardComponent } from './user/dashboard/dashboard.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { PageNotFoundComponent } from './common/page-not-found/page-not-found.component';
 
 const routes: Routes = [
