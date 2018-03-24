@@ -14,8 +14,8 @@ export class DashboardComponent implements OnInit {
     private recipeSevice: RecipeService
   ) { }
   
-  private recipes = null
-    /*[
+  private recipes = 
+    [
       {
 	    "id": 1234,
 	    "title": "Baked Chicken",
@@ -49,16 +49,16 @@ export class DashboardComponent implements OnInit {
 	    "version": 1,
 	    "previous_version": ""
       }
-    ]*/;
+    ];
 
-   getRecipes(): void {
+  /* getRecipes(): void {
     this.recipes = null;
     this.recipeSevice.getRecipeByEmail("email")
       .subscribe(recipes => this.recipes = recipes);
-  } 
+  } */
 
   ngOnInit() {
-    this.getRecipes();
+    //this.getRecipes();
   }
   
   testit(): void {
