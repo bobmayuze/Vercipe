@@ -1,8 +1,41 @@
 <div id="dashboard">
-	<div id="searchContainer">
-		<app-search-box id="search"></app-search-box>
-	</div>
-	<div id="routerContainer">
-		<router-outlet id="router"></router-outlet>
-	</div>
+<mat-card class="buttons">
+  <p>Name: {{creator.name}}</p>
+  <p>Creator Email: {{creator.email}}</p>
+  <mat-action-row>
+    <button mat-raised-button color="primary" (click)="getRecipeDetail(recipe.title)">CREATE!</button>
+    <button mat-raised-button color="primary" routerLink="/dashboard">COPY</button>
+  </mat-action-row>
+</mat-card>
+
+  
+<div class="created" >
+  <h1>Created Recipes</h1>
+  <br/>
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let recipe of recipes; let index = index;" >
+        <mat-expansion-panel-header>
+          <mat-card-title style="margin-top:0.5em">
+             {{ recipe.title }}
+          </mat-card-title>
+        </mat-expansion-panel-header>
+        <p class="section">Materials</p>
+        <ul>
+          <li *ngFor="let mat of recipe.materials">{{ mat }}</li>
+        </ul>
+        <p class="section">Instructions</p>
+        <ol>
+          <li *ngFor="let inst of recipe.instructions">{{ inst }}</li>
+        </ol>
+        <br/> {{ recipe.creator }}
+        <br/> {{ recipe.creator_email }}
+      <mat-action-row>
+        <button mat-raised-button color="primary" (click)="getRecipeDetail(recipe.prev)">PREV</button>
+        <span class="fill-remaining-space "></span>
+        <button mat-raised-button color="primary" routerLink="/dashboard">COPY</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>
 </div>
+</div>
+
