@@ -1,15 +1,9 @@
-<div>
-  <h1>VERCIPE</h1>
-
-  <div id="searchBox">
-    <mat-form-field>
-      <input  #searchBoxInput matInput placeholder="Search Recipes">
-    </mat-form-field>
-    
-  </div>
-
-  <div class="button-row">
-    <button #searchButton mat-raised-button color="primary" (click)="getResultsByTitle(searchBoxInput.value)">Search</button>
-    <button #createButton mat-raised-button color="primary" (click)="createNewRecipe()">Create</button>
-  </div>
+<div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+    <form class="form-inline">
+      <input #searchBoxInput class="form-control mr-sm-2" type="search" placeholder="search recipes" aria-label="Search" (keyup.enter)="getResultsByTitle(searchBoxInput.value)">
+    </form>
+    <button #createButton  class="btn btn-outline-light my-2 my-sm-0 mr-2" (click)="createNewRecipe()">Create</button>
+    <!-- Not yet implemented: Will show the recipes that the user has created -->
+    <button #myRecipesButton class="btn btn-outline-light my-2 my-sm-0 mr-2">
+    My Recipes</button>
 </div>

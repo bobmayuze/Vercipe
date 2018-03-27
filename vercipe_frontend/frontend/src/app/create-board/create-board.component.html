@@ -4,6 +4,16 @@
       <input matInput placeholder="title" [(ngModel)]="title"/>
     </mat-form-field>
 
+    <h3>Time:</h3>
+    <div id="time">
+      <mat-form-field>
+        <input matInput placeholder="prep time" [(ngModel)]="prepTime"/>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="cook time" [(ngModel)]="cookTime"/>
+      </mat-form-field>
+    </div>
+
     <h3>Materials:</h3>
     <div *ngFor="let mat of materials; let index=index;">
       <mat-form-field>

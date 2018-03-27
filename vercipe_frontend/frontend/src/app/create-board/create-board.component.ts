@@ -12,6 +12,8 @@ import { Router } from '@angular/router';
 export class CreateBoardComponent implements OnInit {
 
   private title: string;
+  private prepTime: number;
+  private cookTime: number;
   private instructs: string[] = [``];
   private materials: string[] = [``];
 

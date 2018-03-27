@@ -31,7 +31,6 @@ export class RecipeListComponent implements OnInit {
       this.recipeSevice.getRecipeByTitle(keyWord)
         .subscribe(recipes => this.recipes = recipes);
     }
-
   }
 
   getRecipeDetail(content: string): void {

@@ -1,18 +1,15 @@
 #searchBox {
-  text-align:center;
-  position: relative;
-  margin-top: 5em;
-}
-
-h1 {
-	text-align: center;
-}
-
-h1, button, label {
-	font-family: 'Ubunto Mono', monospace;
+	float:left;
 }
 
 .button-row {
+	float: right;
 	text-align:center
 }
+
+button{
+	font-family: 'Ubunto Mono', monospace;
+}
+
+
 

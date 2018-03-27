@@ -1,5 +1,6 @@
 #wrapper {
 	height: 100%;
+	width: 100%;
 }
 
 #header, #footer {
@@ -7,5 +8,4 @@
 }
 #content {
   height: 80%;
-  background: pink;
 }

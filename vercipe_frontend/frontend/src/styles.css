@@ -17,6 +17,13 @@ html, body {
 	width: 100%;
 }
 
-app-root {
+.container-fluid {
 	height: 100%;
+	width: 100%;
+	padding-right: 0;
+	padding-left: 0;
+	/*display: none;*/
 }
+/*app-root {
+	height: 100%;
+}*/
