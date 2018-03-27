@@ -1,24 +1,24 @@
-<div id="recipes">
+<div id="recipes" class="container-fluid">
   <mat-grid-list cols="2" rowHeight="2:1">
     <mat-grid-tile *ngFor="let recipe of recipes">
-      <mat-card>
+      <!-- <mat-card> -->
         <div>
-          <mat-card-header>
-            <mat-card-title>
+<!--           <mat-card-header>
+            <mat-card-title> -->
               {{ recipe.title }}
-            </mat-card-title>
-          </mat-card-header>
+<!--             </mat-card-title>
+          </mat-card-header> -->
           <br/> {{ recipe._id }}
           <br/> {{ recipe.instructions }}
           <br/> {{ recipe.materials }}
           <br/> {{ recipe.creator }}
           <br/> {{ recipe.creator_email }}
         </div>
-        <mat-card-actions>
+<!--         <mat-card-actions>
           <button mat-raised-button color="primary" (click)="getRecipeDetail(recipe.title)">LIKE</button>
           <button mat-raised-button color="primary" routerLink="/dashboard">SHARE</button>
         </mat-card-actions>
       </mat-card>
-    </mat-grid-tile>
+ -->    </mat-grid-tile>
   </mat-grid-list>
 </div>
