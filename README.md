@@ -11,16 +11,31 @@ Before you started, make sure you have docker installed and can run the hello-wo
 $ git clone https://github.com/bobmayuze/Vercipe
 ```
 
-2. Build images. You will see db not connected this time, don't worry about it.
+2. Build images. You will see db not connected this time, don't worry about it. 
 ```
 $ ./scripts/init.sh
 ```
 
+After you see MongoDB says
+``` 
+mongo              | MongoDB configured successfully. You may now connect to the DB.
+mongo              | $cmd
+```
 
-3. Rebuild containers
+Press crtl + c to stop all these containers.
+
+
+3. Rebuild containers, and migrate mongo Database. Firstly restart all containers:
 ```
 $ ./scripts/init.sh 
 ```
+
+Then, run DB_Migration script:
+```
+$ ./scripts/DB_Migration.sh
+```
+
+
 
 4. Start a new terminal, and cd into vercipe_frontend/frontend folder
 
@@ -210,6 +225,17 @@ Endpoint: GET /dashboard
 Authorization: Log in as user
 Request Body: None
 Response: 200, if success
+```
+
+#### [5] Get all recipes created by a specific user
+```
+Endpoint: POST /allRecipes
+Authorization: None
+Request Body:
+{
+    "creater_email" : String
+}
+REsponse: { message : [Recipe]}
 ```
 
 

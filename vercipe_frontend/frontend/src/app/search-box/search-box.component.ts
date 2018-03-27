@@ -23,7 +23,11 @@ export class SearchBoxComponent implements OnInit {
     this.router.navigateByUrl('/create');
   }
 
-    ngOnInit() {
+  findUserRecipes = () => {
+    this.router.navigateByUrl('/dashboard');
+  }
+
+  ngOnInit() {
   }
 
 }

@@ -60,6 +60,17 @@ module.exports.findRecipeByTitle = async(title)=>{
     return target;
 };
 
+module.exports.findRecipeByCreatorEmail = async(creator_email) => {
+    await console.log("Finding related to", creator_email);
+    var target;
+    await recipe.find({
+        "creator_email": creator_email
+    }, (err, result) => {
+        target = result;
+    });
+    return target;    
+};
+
 module.exports.forkByRecipe = async(originalRecipe, user=null)=>{
     console.log("User: \n",user)
 
@@ -90,6 +101,7 @@ module.exports.findPreviousVersionByRecipeId = async (current_id) => {
     console.log("Are you looking for ^_^",current_id);
     // var current_recipe = await findRecipeById(current_id);
     console.log(current_recipe);
-    
     return
 }
+
+
