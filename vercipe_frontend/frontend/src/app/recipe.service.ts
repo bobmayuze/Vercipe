@@ -50,10 +50,10 @@ export class RecipeService {
   deleteRecipe(id) {
     return this.http.delete(this.url + 'recipes', { params: {id : id} });
   }
-  // to implement in the future
-  // cloneRecipe() {
-  // 	return this.http.post()
-  // }
+
+  cloneRecipe(id) {
+    return this.http.post(this.url + 'recipe/forkById', {id: id});
+  }
 
   getAllRecipes() {
     return this.http.get<Recipe[]>(this.url + 'allRecipes');

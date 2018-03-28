@@ -1,6 +1,8 @@
-<mat-toolbar color="primary">
-  <h1 routerLink="/recipes">Vercipe</h1>
+<nav class="navbar navbar-expand-lg mat-elevation-z10">
+	<h1 class="navbar-brand" routerLink="/recipes">Vercipe</h1>
+
+  <app-search-box></app-search-box>
+
   <span class="fill-remaining-space"></span>
   <a (click)="login()"><img alt="Login" src="assets\ic_account_circle_white_24dp_2x.png" id="login"></a>
-</mat-toolbar>
-
+</nav>

@@ -10,20 +10,24 @@ export class SearchBoxComponent implements OnInit {
 
   constructor(private router: Router) { }
 
-  getResults = () => {
-    this.router.navigateByUrl('/recipes');
-  }
-
   getResultsByTitle = (title: string) => {
-    console.log(`Getting info about ${title}`);
-    this.router.navigateByUrl(`/recipes/${title}`);
+    if (title) {
+      console.log(`Getting info about ${title}`);
+      this.router.navigateByUrl(`/recipes/${title}`);
+    } else {
+      this.router.navigateByUrl('/recipes');
+    }
   }
 
   createNewRecipe = () => {
     this.router.navigateByUrl('/create');
   }
 
-    ngOnInit() {
+  findUserRecipes = () => {
+    this.router.navigateByUrl('/dashboard');
+  }
+
+  ngOnInit() {
   }
 
 }

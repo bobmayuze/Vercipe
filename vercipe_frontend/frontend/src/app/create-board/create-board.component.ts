@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Directive, Renderer, ElementRef } from '@angular/core';
 import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { RecipeService } from '../recipe.service';
@@ -12,6 +12,8 @@ import { Router } from '@angular/router';
 export class CreateBoardComponent implements OnInit {
 
   private title: string;
+  private prepTime: number;
+  private cookTime: number;
   private instructs: string[] = [``];
   private materials: string[] = [``];
 

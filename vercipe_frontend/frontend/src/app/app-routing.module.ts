@@ -17,11 +17,11 @@ const routes: Routes = [
   { path: 'login', component: LogInComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'all', component: RecipeListComponent },
-  { path: 'user', component: DashboardComponent }
-  // { path: 'search', component: HeroSearchComponent },
-  // { path: 'detail/:id', component: HeroDetailComponent },
-  // // It routes to heros
-  // { path: 'heroes', component: HeroesComponent }
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'recipes', component: RecipeListComponent },
+  { path: 'recipes/:title', component: RecipeListComponent },
+  { path: 'detail/:id', component: DetailBoardComponent },
+  { path: '404', component: PageNotFoundComponent }
 ];
 
 @NgModule({

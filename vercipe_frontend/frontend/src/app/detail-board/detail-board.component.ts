@@ -1,64 +1,76 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 
 import { RecipeService } from '../recipe.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Recipe } from '../recipe';
 
 @Component({
-  selector: 'app-detail-board',
-  templateUrl: './detail-board.component.html',
-  styleUrls: ['./detail-board.component.css']
+    selector: 'app-detail-board',
+    templateUrl: './detail-board.component.html',
+    styleUrls: ['./detail-board.component.css']
 })
 export class DetailBoardComponent implements OnInit {
-	title: string = null;
-	creator: string = null;
-	creator_email: string = null;
-	materials: string[] = null;
-	instructions: string = null;
-	version: number = null;
-	created_at: Date = null;
+    title: string = null;
+    creator: string = null;
+    creator_email: string = null;
+    materials: string[] = null;
+    instructions: string = null;
+    version: number = null;
+    created_at: Date = null;
+    id: string = null;
+    currentRecipe: any;
 
-  constructor(private service: RecipeService) { }
+    constructor(
+        private location: Location,
+        private service: RecipeService,
+        private route: ActivatedRoute,
+        private router: Router
+    ) { }
 
-  ngOnInit() {
-  	this.getRecipeById('5a9df6c3d0d4270012f1b06b')
-  }
+    ngOnInit() {
+        this.getRecipeById();
+    }
 
-  renderRecipe(recipe) {
-  	this.title = recipe['title'];
-    this.creator = recipe['creator'];
-    this.creator_email = recipe['creator_email'];
-    this.materials = recipe['materials'];
-    this.instructions = recipe['instructions'];
-    this.version = recipe['version'];
-    this.created_at = recipe['created_at'];
-  }
+    renderRecipe = (recipe) => {
+        this.title = recipe.title;
+        this.creator = recipe.creator;
+        this.creator_email = recipe.creator_email;
+        this.materials = recipe.materials;
+        this.instructions = recipe.instructions;
+        this.version = recipe.version;
+        this.created_at = recipe.created_at;
+    }
 
-  testService() {
-  	this.service.testService().subscribe(data => {
-  		this.title = data['msg'];
-  	})
-  }
+    getRecipeById = () => {
+        this.id = this.route.snapshot.paramMap.get('id');
+        console.log(this.id);
+        this.service.getRecipeById(this.id).subscribe(recipe => {
+            console.log(recipe);
+            this.currentRecipe = recipe;
+            console.log(this.currentRecipe);
+            this.renderRecipe(recipe);
+        });
+    }
 
-  getRecipeById(id: String) {
-  	this.service.getRecipeById(id).subscribe(data => {
-  		console.log(data);
-  		this.renderRecipe(data);
-  	})
-  }
+    // Uses the current recipe id to fetch previous versions
+    getRecipeByVersion = (version: string) => {
 
-  getRecipeByEmail(email: String) {
-  	this.service.getRecipeByEmail(email)
-  }
-  // move to other component
-  // getRecipesAll(title) {
-  // 	this.service.getRecipeByTitle(title)
-  // }
+    }
 
-  deleteRecipe(id) {
-  	this.service.deleteRecipe(id)
-  }
-  // to implement in the future
-  // cloneRecipe() {
-  // 	return this.service.cloneRecipe()
-  // }
+    // I'm not set on this behavior, open to suggestions
+    deleteRecipe() {
+        this.service.deleteRecipe(this.id);
+        this.goBack();
+    }
+
+    // To be completed
+    cloneRecipe = () => {
+        this.service.cloneRecipe(this.id);
+    }
+
+    goBack(): void {
+        this.location.back();
+    }
 
 }

@@ -1,9 +1,22 @@
 <mat-card *ngIf="title">
-  <div>
-  	{{ title }} <br/>
-  	{{ instructions }} <br/>
-  	{{ materials }} <br/>
-  	{{ creator }} <br/>
-  	{{ creator_email }}
- 	</div>
+  	<div>
+		{{ title }} <br/>
+		<mat-form-field>
+			<mat-select placeholder="Current version: {{version}}">
+				<!-- <mat-option *ngFor="let version of versions" -->
+				<mat-option value="option1">{{version}}</mat-option>
+			</mat-select>
+		</mat-form-field>
+		<br/>
+		{{ instructions }} <br/>
+		{{ materials }} <br/>
+		{{ creator }} <br/>
+		{{ creator_email }}
+
+	</div>
+	<div>
+		<button style="background: green;" mat-raised-button (click)="cloneRecipe()">clone</button>
+		<button style="background: yellow;" mat-raised-button (click)="goBack()">back</button>
+		<button style="background: red;" mat-raised-button (click)="deleteRecipe()">delete</button>
+	</div>
 </mat-card>

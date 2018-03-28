@@ -1,16 +1,17 @@
+.navbar {
+    padding: 10;
+    background: #3f51b5;
+}
+
 h1 {
-  font-family: 'Bowlby One SC', cursive;
-  font-size: 3em;
+    font-family: 'Bowlby One SC', cursive;
+    font-size: 3em;
 }
 
 .fill-remaining-space {
-  /* This fills the remaining space, by using flexbox. 
+    /* This fills the remaining space, by using flexbox. 
      Every toolbar row uses a flexbox row layout. */
-  flex: 1 1 auto;
-}
-
-.signin-content {
-  padding: 60px 1rem;
+    flex: 1 1 auto;
 }
 
 /* Rules for using icons as white on a dark background. */

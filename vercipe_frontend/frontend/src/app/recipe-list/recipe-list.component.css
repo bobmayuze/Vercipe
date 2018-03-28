@@ -2,3 +2,8 @@
   height: 100%;
   overflow: auto;
 }
+
+mat-card {
+  height: 90%;
+  width: 95%;
+}

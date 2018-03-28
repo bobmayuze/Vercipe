@@ -1,18 +1,6 @@
 #dashboard {
-    padding-top: 4em;
-	width: 100%;
-	height: 100%;
-}
-
-#searchContainer {
-	float:left;
-	width: 28%;
-	height: 100%;
-}
-
-#routerContainer {
-	width: 65%;
-	float: right;
+  padding-top: 4em;
+  padding-bottom: 4em;
 	height: 100%;
 }
 
