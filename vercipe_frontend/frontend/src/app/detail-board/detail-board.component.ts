@@ -1,64 +1,68 @@
 import { Component, OnInit } from '@angular/core';
 
 import { RecipeService } from '../recipe.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-detail-board',
-  templateUrl: './detail-board.component.html',
-  styleUrls: ['./detail-board.component.css']
+    selector: 'app-detail-board',
+    templateUrl: './detail-board.component.html',
+    styleUrls: ['./detail-board.component.css']
 })
 export class DetailBoardComponent implements OnInit {
-	title: string = null;
-	creator: string = null;
-	creator_email: string = null;
-	materials: string[] = null;
-	instructions: string = null;
-	version: number = null;
-	created_at: Date = null;
+    title: string = null;
+    creator: string = null;
+    creator_email: string = null;
+    materials: string[] = null;
+    instructions: string = null;
+    version: number = null;
+    created_at: Date = null;
+    id: string = null;
 
-  constructor(private service: RecipeService) { }
+    constructor(
+        private service: RecipeService,
+        private route: ActivatedRoute,
+        private router: Router
+    ) { }
 
-  ngOnInit() {
-  	this.getRecipeById('5a9df6c3d0d4270012f1b06b')
-  }
+    ngOnInit() {
+        this.getRecipeById();
+    }
 
-  renderRecipe(recipe) {
-  	this.title = recipe['title'];
-    this.creator = recipe['creator'];
-    this.creator_email = recipe['creator_email'];
-    this.materials = recipe['materials'];
-    this.instructions = recipe['instructions'];
-    this.version = recipe['version'];
-    this.created_at = recipe['created_at'];
-  }
+    renderRecipe = (recipe) => {
+        this.title = recipe.title;
+        this.creator = recipe.creator;
+        this.creator_email = recipe.creator_email;
+        this.materials = recipe.materials;
+        this.instructions = recipe.instructions;
+        this.version = recipe.version;
+        this.created_at = recipe.created_at;
+    }
 
-  testService() {
-  	this.service.testService().subscribe(data => {
-  		this.title = data['msg'];
-  	})
-  }
+    getRecipeById = () => {
+        this.id = this.route.snapshot.paramMap.get('id');
+        console.log(this.id);
+        this.service.getRecipeById(this.id).subscribe(recipe => {
+            console.log(recipe);
+            this.renderRecipe(recipe);
+        })
+    }
 
-  getRecipeById(id: String) {
-  	this.service.getRecipeById(id).subscribe(data => {
-  		console.log(data);
-  		this.renderRecipe(data);
-  	})
-  }
+    // Uses the current recipe id to fetch previous versions
+    getRecipeByVersion = (version: string) => {
 
-  getRecipeByEmail(email: String) {
-  	this.service.getRecipeByEmail(email)
-  }
-  // move to other component
-  // getRecipesAll(title) {
-  // 	this.service.getRecipeByTitle(title)
-  // }
+    }
 
-  deleteRecipe(id) {
-  	this.service.deleteRecipe(id)
-  }
-  // to implement in the future
-  // cloneRecipe() {
-  // 	return this.service.cloneRecipe()
-  // }
+    deleteRecipe() {
+        this.service.deleteRecipe(this.id);
+        this.goBack();
+    }
+
+    cloneRecipe = () => {
+        this.service.cloneRecipe(this.id);
+    }
+
+    goBack = () => {
+        this.router.navigateByUrl(`/recipes/${this.title}`);
+    }
 
 }

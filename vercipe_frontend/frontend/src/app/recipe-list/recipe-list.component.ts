@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 
 import { RecipeService } from '../recipe.service';
 import { Recipe } from '../recipe';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-list',
@@ -15,7 +16,8 @@ export class RecipeListComponent implements OnInit {
   constructor(
     private recipeSevice: RecipeService,
     private route: ActivatedRoute,
-    private location: Location
+    private location: Location,
+    private router: Router
   ) { }
 
   recipes = null;
@@ -23,6 +25,7 @@ export class RecipeListComponent implements OnInit {
 
   getRecipes(): void {
     const keyWord: string = this.route.snapshot.paramMap.get('title');
+    console.log(keyWord);
     if (keyWord === null) {
       this.recipeSevice.getRecipesAll()
         .subscribe(recipes => this.recipes = recipes);
@@ -33,15 +36,9 @@ export class RecipeListComponent implements OnInit {
     }
   }
 
-  getRecipeDetail(content: string): void {
-    console.log(`Getting....${content}`);
-    this.recipeSevice.getVersionsById(content)
-    .subscribe(
-      result => {
-        this.versionResult = result;
-        console.log(result);
-      }
-    );
+  getRecipeDetail(id: string): void {
+    console.log(`Getting....${id}`);
+    this.router.navigateByUrl(`detail/${id}`);
   }
 
   ngOnInit() {

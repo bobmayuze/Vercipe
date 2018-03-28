@@ -20,6 +20,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'recipes', component: RecipeListComponent },
   { path: 'recipes/:title', component: RecipeListComponent },
+  { path: 'detail/:id', component: DetailBoardComponent },
   { path: '404', component: PageNotFoundComponent }
 ];
 
