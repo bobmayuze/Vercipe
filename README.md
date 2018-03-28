@@ -11,7 +11,7 @@ Before you started, make sure you have docker installed and can run the hello-wo
 $ git clone https://github.com/bobmayuze/Vercipe
 ```
 
-2. Build images. You will see db not connected this time, don't worry about it. 
+2. Build images. You will not see the db connected this time, don't worry about it. 
 ```
 $ ./scripts/init.sh
 ```
@@ -36,7 +36,6 @@ $ ./scripts/DB_Migration.sh
 ```
 
 
-
 4. Start a new terminal, and cd into vercipe_frontend/frontend folder
 
 5. Install the dependencies 
@@ -49,7 +48,7 @@ $ npm install
 $ ng serve -o
 ```
 
-Your browser shoud opne a window at port 4200. If not, you can go to port 4200 to check it.
+Your browser should open a window at port 4200. If not, you can go to port 4200 to check it.
 
 
 
