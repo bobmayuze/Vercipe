@@ -1,12 +1,13 @@
 <div id="recipes" class="container-fluid">
   <mat-grid-list cols="2" rowHeight="2:1">
     <mat-grid-tile *ngFor="let recipe of recipes">
-      {{ recipe.title }}
-      {{ recipe.Objectid }}
-      {{ recipe.instructions }}
-      {{ recipe.creator }}
-      {{ recipe.creator_email }}
-      <button (click)="getRecipeDetail('5a9df6c3d0d4270012f1b06b')">Detail</button>
+      <mat-card class="mat-elevation-z5">
+          {{ recipe.title }}
+          {{ recipe.creator }}
+          {{ recipe.creator_email }}
+          {{ recipe.cookTime }}
+          <button mat-raised-button (click)="getRecipeDetail('5a9df6c3d0d4270012f1b06b')">Detail</button>
+      </mat-card>
       <!-- <mat-card>
         <div>
           <mat-card-header>

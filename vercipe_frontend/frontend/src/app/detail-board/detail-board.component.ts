@@ -52,15 +52,18 @@ export class DetailBoardComponent implements OnInit {
 
     }
 
+    // I'm not set on this behavior, open to suggestions
     deleteRecipe() {
         this.service.deleteRecipe(this.id);
         this.goBack();
     }
 
+    // To be completed
     cloneRecipe = () => {
         this.service.cloneRecipe(this.id);
     }
 
+    // Very Hacky, will have to think of something better..
     goBack = () => {
         this.router.navigateByUrl(`/recipes/${this.title}`);
     }
