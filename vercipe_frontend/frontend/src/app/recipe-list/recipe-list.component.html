@@ -3,10 +3,16 @@
     <mat-grid-tile *ngFor="let recipe of recipes">
       <mat-card class="mat-elevation-z5">
           {{ recipe.title }}
+          <br>
           {{ recipe.creator }}
+          <br>
           {{ recipe.creator_email }}
+          <br>
           {{ recipe.cookTime }}
-          <button mat-raised-button (click)="getRecipeDetail('5a9df6c3d0d4270012f1b06b')">Detail</button>
+          <br>
+          {{ recipe._id }}
+          <br>
+          <button mat-raised-button (click)="getRecipeDetail(recipe._id)">Detail</button>
       </mat-card>
     </mat-grid-tile>
   </mat-grid-list>

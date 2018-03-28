@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 
 import { RecipeService } from '../recipe.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Recipe } from '../recipe';
 
 @Component({
     selector: 'app-detail-board',
@@ -17,8 +19,10 @@ export class DetailBoardComponent implements OnInit {
     version: number = null;
     created_at: Date = null;
     id: string = null;
+    currentRecipe: any;
 
     constructor(
+        private location: Location,
         private service: RecipeService,
         private route: ActivatedRoute,
         private router: Router
@@ -43,8 +47,10 @@ export class DetailBoardComponent implements OnInit {
         console.log(this.id);
         this.service.getRecipeById(this.id).subscribe(recipe => {
             console.log(recipe);
+            this.currentRecipe = recipe;
+            console.log(this.currentRecipe);
             this.renderRecipe(recipe);
-        })
+        });
     }
 
     // Uses the current recipe id to fetch previous versions
@@ -63,9 +69,8 @@ export class DetailBoardComponent implements OnInit {
         this.service.cloneRecipe(this.id);
     }
 
-    // Very Hacky, will have to think of something better..
-    goBack = () => {
-        this.router.navigateByUrl(`/recipes/${this.title}`);
+    goBack(): void {
+        this.location.back();
     }
 
 }

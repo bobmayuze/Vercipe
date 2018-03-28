@@ -28,11 +28,15 @@ export class RecipeListComponent implements OnInit {
     console.log(keyWord);
     if (keyWord === null) {
       this.recipeSevice.getRecipesAll()
-        .subscribe(recipes => this.recipes = recipes);
+        .subscribe(recipes => {
+          this.recipes = recipes;
+        });
     } else {
       console.log(`We need ${keyWord}`);
       this.recipeSevice.getRecipeByTitle(keyWord)
-        .subscribe(recipes => this.recipes = recipes);
+        .subscribe(recipes => {
+          this.recipes = recipes;
+        });
     }
   }
 
