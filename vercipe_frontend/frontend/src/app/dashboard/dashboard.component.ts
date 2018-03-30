@@ -9,11 +9,12 @@ import {MatExpansionModule} from '@angular/material/expansion';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  user: any = null;
 
   constructor(
     private recipeSevice: RecipeService
   ) { }
-  
+
   private recipes = 
     [
       {
@@ -58,11 +59,15 @@ export class DashboardComponent implements OnInit {
   } */
 
   ngOnInit() {
+    // this.user = `HHH`;
+    this.user = JSON.parse(sessionStorage.getItem(`currentUser`));
+    console.log(this.user[`username`]);
+    console.log(this.user[`email`]);
+    // console.log(this.user);
     //this.getRecipes();
   }
-  
+
   testit(): void {
-    alert("here");
     alert(this.recipes);
     console.log(this.recipes);
   }
