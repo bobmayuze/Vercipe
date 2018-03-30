@@ -59,11 +59,7 @@ export class DashboardComponent implements OnInit {
   } */
 
   ngOnInit() {
-    // this.user = `HHH`;
     this.user = JSON.parse(sessionStorage.getItem(`currentUser`));
-    console.log(this.user[`username`]);
-    console.log(this.user[`email`]);
-    // console.log(this.user);
     //this.getRecipes();
   }
 
