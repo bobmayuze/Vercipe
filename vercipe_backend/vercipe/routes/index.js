@@ -67,19 +67,15 @@ router.delete("/recipes",(req, res)=>{
 
 // [8] Clone a recipe from one recipe
 router.post("/recipes/forkById", async(req, res)=>{
-  const thisUser = req.session.user;
-  if (thisUser) {
-    const originalRecipe = await service.findRecipeById(mongoose.Types.ObjectId(req.body.id));
-    var flag = await service.forkByRecipe(originalRecipe, thisUser);
-    if (flag) {
-      res.send("Success");
-    } else {
-      res.send("Nahhhhhh");
-    };    
-  }
-  else{
-    res.send("Please login first.");
-  }
+  const username = req.body.username;
+  const originalRecipe = await service.findRecipeById(mongoose.Types.ObjectId(req.body.id));
+  var flag = await service.forkByRecipe(originalRecipe, username);
+  if (flag) {
+    res.send({"msg":"Success"});
+  } else {
+    res.send({"msg":"Nahhhhhh"});
+  };    
+
 
 })
 
