@@ -1,13 +1,26 @@
-import { Component, OnInit, Directive, Renderer, ElementRef } from '@angular/core';
+import { Component, OnInit, Directive, AfterContentInit, ElementRef, ChangeDetectorRef } from '@angular/core';
 import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { RecipeService } from '../recipe.service';
 import { Router } from '@angular/router';
 
+@Directive({
+  selector: '[appFocusInput]'
+})
+export class FocusInputDirective implements AfterContentInit {
+  private firstTime: Boolean = true;
+  constructor(public elem: ElementRef) {}
+
+  ngAfterContentInit() {
+    console.log('at least we\'re here');
+    this.elem.nativeElement.focus();
+  }
+}
+
 @Component({
   selector: 'app-create-board',
   templateUrl: './create-board.component.html',
-  styleUrls: ['./create-board.component.css']
+  styleUrls: ['./create-board.component.css'],
 })
 export class CreateBoardComponent implements OnInit {
 
@@ -20,7 +33,8 @@ export class CreateBoardComponent implements OnInit {
   constructor(
     private location: Location,
     private recipeSevice: RecipeService,
-    private router: Router
+    private router: Router,
+    private cdRef: ChangeDetectorRef
   ) { }
 
   trackByIndex(index: number, obj: any): any {
@@ -36,6 +50,7 @@ export class CreateBoardComponent implements OnInit {
 
   addStep(): void {
     this.instructs.push(``);
+    this.cdRef.detectChanges();
   }
 
   remStep(): void {
@@ -44,6 +59,7 @@ export class CreateBoardComponent implements OnInit {
 
   addMat(): void {
     this.materials.push(``);
+    this.cdRef.detectChanges();
   }
 
   remMat(): void {
