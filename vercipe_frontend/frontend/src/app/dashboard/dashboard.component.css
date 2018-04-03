@@ -27,7 +27,7 @@
   padding: 1em;
   overflow: hidden;
 }
-.logout_b {
+.logoutButton {
   layout:auto;
   flex-align: center;
   position: fixed; 
@@ -35,9 +35,6 @@
   border-radius: 1em;
   padding: 1em;
   overflow: hidden;
-}
-.test {
-  display:none;
 }
 ul {
   list-style: initial;
