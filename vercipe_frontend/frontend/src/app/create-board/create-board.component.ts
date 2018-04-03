@@ -11,7 +11,9 @@ export class FocusInputDirective implements AfterContentInit {
   constructor(public elem: ElementRef) {}
 
   ngAfterContentInit() {
-    this.elem.nativeElement.focus();
+    if (this.elem.nativeElement.attributes[4].value.slice(-1) !== '1') {
+      this.elem.nativeElement.focus();
+    }
   }
 }
 
