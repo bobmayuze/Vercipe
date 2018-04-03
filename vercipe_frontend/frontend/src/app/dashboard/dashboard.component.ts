@@ -3,8 +3,6 @@ import { RecipeService } from '../recipe.service';
 import { Recipe } from '../recipe';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { Router } from '@angular/router';
-//import { User } from '../user';
-//import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,7 +13,6 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private recipeSevice: RecipeService,
-    //private userService: UserService,
     private router: Router
   ) { }
   
