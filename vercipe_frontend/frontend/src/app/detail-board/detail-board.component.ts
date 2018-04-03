@@ -16,10 +16,12 @@ export class DetailBoardComponent implements OnInit {
     creator_email: string = null;
     materials: string[] = null;
     instructions: string = null;
-    version: number = null;
+    currentVersion: number;
     created_at: Date = null;
+    previousVersions: any = {};
     id: string = null;
     currentRecipe: any;
+
 
     constructor(
         private location: Location,
@@ -29,6 +31,7 @@ export class DetailBoardComponent implements OnInit {
     ) { }
 
     ngOnInit() {
+        this.previousVersions.versions = null;
         this.getRecipeById();
     }
 
@@ -38,24 +41,28 @@ export class DetailBoardComponent implements OnInit {
         this.creator_email = recipe.creator_email;
         this.materials = recipe.materials;
         this.instructions = recipe.instructions;
-        this.version = recipe.version;
+        this.currentVersion = recipe.version;
         this.created_at = recipe.created_at;
+        console.log(`Render Finished`);
+
+    }
+
+    // Uses the current recipe id to fetch previous versions
+    getAllPrevious = () => {
+        console.log(`Getting previous versions of `, this.id);
+        this.service.getVersionsById(this.id).subscribe(versions => {
+            this.previousVersions = versions;
+            console.log(this.previousVersions);
+        });
     }
 
     getRecipeById = () => {
         this.id = this.route.snapshot.paramMap.get('id');
-        console.log(this.id);
-        this.service.getRecipeById(this.id).subscribe(recipe => {
-            console.log(recipe);
+        this.service.getRecipeById(this.id).subscribe((recipe) => {
             this.currentRecipe = recipe;
-            console.log(this.currentRecipe);
-            this.renderRecipe(recipe);
+            this.getAllPrevious();
+            this.renderRecipe(this.currentRecipe);
         });
-    }
-
-    // Uses the current recipe id to fetch previous versions
-    getRecipeByVersion = (version: string) => {
-
     }
 
     // I'm not set on this behavior, open to suggestions
@@ -71,6 +78,10 @@ export class DetailBoardComponent implements OnInit {
 
     goBack(): void {
         this.location.back();
+    }
+
+    jumpTo(): void {
+        console.log(`JUMPPPPPP`);
     }
 
 }

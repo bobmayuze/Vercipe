@@ -48,11 +48,21 @@ export class RecipeService {
   }
 
   deleteRecipe(id) {
-    return this.http.delete(this.url + 'recipes', { params: {id : id} });
+    return this.http.delete(this.url + 'recipes', { params: {id : id} }).subscribe(
+      data => this.data,
+      err => this.err
+    );
   }
 
   cloneRecipe(id) {
-    return this.http.post(this.url + 'recipe/forkById', {id: id});
+    const user: any = JSON.parse(sessionStorage.getItem(`currentUser`));
+    return this.http.post(this.url + 'recipes/forkById', {
+      id: id,
+      username: user[`username`]
+    }).subscribe(
+      data => this.data,
+      err => this.err
+    );
   }
 
   getAllRecipes() {

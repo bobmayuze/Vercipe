@@ -1,7 +1,16 @@
 <div id="dashboard" class="container-fluid">
-<div class="logoutButton">
-<button mat-raised-button color="primary" (click)="logout()">Logout</button>
-</div>
+
+  <div class="logoutButton">
+  <button mat-raised-button color="primary" (click)="logout()">Logout</button>
+  </div>
+
+  <div class="userInfo" *ngIf="user">
+    <h1>Hello, {{ user.username | titlecase}} </h1>
+    <br>
+    <br>
+    <br>
+    <br>
+  </div>
   <div class="created">
     <h1>Created Recipes</h1>
     <br/>

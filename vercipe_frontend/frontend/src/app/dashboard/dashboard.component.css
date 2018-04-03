@@ -10,7 +10,7 @@
   flex: 1 1 auto;
 }
 
-.created {
+.created, .userInfo {
   layout: auto;
   layout-align: center;
   width: 55%;

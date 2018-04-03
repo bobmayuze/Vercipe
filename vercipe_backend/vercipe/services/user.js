@@ -40,7 +40,6 @@ module.exports.login = (req, res)=>{
             return res.status(404).send({ "msg": "Username or password doesn't match" });
         }
         console.log("Login successfully as", username);
-        console.log(result);
         req.session.user = result;
         return res.status(200).send(result);
         

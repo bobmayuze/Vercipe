@@ -71,16 +71,17 @@ module.exports.findRecipeByCreatorEmail = async(creator_email) => {
     return target;    
 };
 
-module.exports.forkByRecipe = async(originalRecipe, user=null)=>{
-    console.log("User: \n",user)
+module.exports.forkByRecipe = async(originalRecipe, username)=>{
+    console.log("User: \n", username, "is cloning ", originalRecipe.title);
 
     var newRecipe = new recipe;
     var flag;
     newRecipe.version = originalRecipe.version + 1;
     newRecipe.previous_version = originalRecipe.id;
     newRecipe.title = originalRecipe.title;
+    newRecipe.instructions = originalRecipe.instructions;
     newRecipe.materials = originalRecipe.materials;
-    newRecipe.creator = user.username;
+    newRecipe.creator = username;
 
     await newRecipe.save((err) => {
         if (err) console.log(err);
