@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RecipeService } from '../recipe.service';
 import { Recipe } from '../recipe';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,7 +13,8 @@ export class DashboardComponent implements OnInit {
   user: any = null;
 
   constructor(
-    private recipeSevice: RecipeService
+    private recipeSevice: RecipeService,
+    private router: Router
   ) { }
 
   private recipes = 
@@ -67,5 +69,9 @@ export class DashboardComponent implements OnInit {
     alert(this.recipes);
     console.log(this.recipes);
   }
-
+  logout(): void {
+    alert(`Successfully Logged Out!`);
+    sessionStorage.clear();
+    this.router.navigateByUrl(`/`);
+  }
 }

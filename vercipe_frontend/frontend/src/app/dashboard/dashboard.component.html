@@ -1,4 +1,9 @@
 <div id="dashboard" class="container-fluid">
+
+  <div class="logoutButton">
+  <button mat-raised-button color="primary" (click)="logout()">Logout</button>
+  </div>
+
   <div class="userInfo" *ngIf="user">
     <h1>Hello, {{ user.username | titlecase}} </h1>
     <br>

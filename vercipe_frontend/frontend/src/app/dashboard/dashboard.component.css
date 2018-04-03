@@ -27,7 +27,15 @@
   padding: 1em;
   overflow: hidden;
 }
-
+.logoutButton {
+  layout:auto;
+  flex-align: center;
+  position: fixed; 
+  margin-left: 80%; 
+  border-radius: 1em;
+  padding: 1em;
+  overflow: hidden;
+}
 ul {
   list-style: initial;
   margin: initial;
