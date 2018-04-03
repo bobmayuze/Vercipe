@@ -17,7 +17,7 @@
     <h3>Materials:</h3>
     <div *ngFor="let mat of materials; let index=index;">
       <mat-form-field>
-        <input matInput placeholder="item {{index+1}}" (ngModel)="materials[index]"
+        <input appFocusInput matInput placeholder="item {{index+1}}" (ngModel)="materials[index]"
          (keydown.enter)="addMat()">
       </mat-form-field>
     </div>
@@ -25,7 +25,7 @@
     <h3>Instructions:</h3>
     <div *ngFor="let step of instructs; let index=index;">
       <mat-form-field>
-        <input matInput placeholder="step {{index+1}}" (ngModel)="instructs[index]"
+        <input appFocusInput matInput placeholder="step {{index+1}}" (ngModel)="instructs[index]"
          (keydown.enter)="addStep()">
       </mat-form-field>
     </div>

@@ -57,6 +57,7 @@ import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { LogInComponent } from './user/log-in/log-in.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PageNotFoundComponent } from './common/page-not-found/page-not-found.component';
+import { FocusInputDirective } from './create-board/create-board.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { PageNotFoundComponent } from './common/page-not-found/page-not-found.co
     SignUpComponent,
     LogInComponent,
     DashboardComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    FocusInputDirective
   ],
   imports: [
     BrowserModule,
