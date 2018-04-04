@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -15,7 +16,8 @@ export class SignUpComponent implements OnInit {
 
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -23,18 +25,18 @@ export class SignUpComponent implements OnInit {
 
   signUp(): void {
     if ((this.username == null) || (this.password == null) || this.passwordConf == null) {
-      alert("Please fill in all required fields");
-    } else if (this.password != this.passwordConf){
-      alert("Password and confirmed password don't match");
+      alert(`Please fill in all required fields`);
+    } else if (this.password !== this.passwordConf) {
+      alert(`Password and confirmed password don't match`);
     } else {
       const send: any = {};
       send.username = this.username;
       send.password = this.password;
       send.passwordConf = this.passwordConf;
       send.email = this.email;
-  
       this.userService.signUp(send);
-      alert(`Submitted`);
+      alert(`Signup success, now navigating you to home page`);
+      this.router.navigateByUrl('/');
     }
 
   }

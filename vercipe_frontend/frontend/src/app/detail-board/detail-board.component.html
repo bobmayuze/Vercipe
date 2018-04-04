@@ -3,7 +3,7 @@
 		{{ title }} <br/>
 		<mat-form-field>
 			<mat-select placeholder="Current version: {{currentVersion}}">
-				<mat-option *ngFor="let record of previousVersions.versions" value="record" ng-click="">{{record}}</mat-option>
+				<mat-option *ngFor="let record of previousVersions.versions" value="record" (click)="jumpTo(record)">{{record}}</mat-option>
 			</mat-select>
 			
 		</mat-form-field>
