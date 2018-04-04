@@ -80,8 +80,11 @@ export class DetailBoardComponent implements OnInit {
         this.location.back();
     }
 
-    jumpTo(): void {
+    jumpTo(record: string): void {
         console.log(`JUMPPPPPP`);
+        console.log(record);
+        this.router.navigateByUrl('/detail/' + record);
+        window.location.reload();
     }
 
 }
