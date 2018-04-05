@@ -14,9 +14,13 @@ import { UserService } from '../../user/user.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  
+
   private username: string;
   private password: string;
+  check: boolean;
+  formClick: boolean;
+  signUpClick: boolean;
+  cancelClick: boolean;
 
   constructor(private userService: UserService, private router: Router) { }
 
@@ -54,7 +58,6 @@ export class HeaderComponent implements OnInit {
       console.log(`Successfully logged in`);
       this.check = true;
       this.router.navigateByUrl('/');
-      //return this.check;
     } else {
       console.log(`Please Login first`);
     }
@@ -73,25 +76,23 @@ export class HeaderComponent implements OnInit {
     return this.check;
   }
   clickCheck() {
-    if(this.signUpClick == true){
-       this.formClick=false;
+    if (this.signUpClick === true) {
+       this.formClick = false;
        this.signUpClick = false;
     }
-    if(this.cancelClick == true){
+    if (this.cancelClick === true) {
        this.check = true;
        this.cancelClick = false;
-       this.formClick=false;
+       this.formClick = false;
+    } else if (this.formClick === true) {
+       this.check = false;
+    } else {
+       this.check = true;
     }
-    else if(this.formClick==true){
-       this.check=false;
-    }
-    else{
-       this.check=true;
-    }
-    this.formClick=false;
+    this.formClick = false;
   }
   formShow() {
-    this.formClick = true;  
+    this.formClick = true;
   }
   signUp() {
     this.check = true;
