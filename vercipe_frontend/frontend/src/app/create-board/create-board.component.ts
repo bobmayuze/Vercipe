@@ -53,8 +53,9 @@ export class CreateBoardComponent implements OnInit {
     this.cdRef.detectChanges();
   }
 
-  remStep(): void {
-    this.instructs.pop();
+  remStep(index: number): void {
+    this.instructs.splice(index, 1);    
+    this.cdRef.detectChanges();
   }
 
   addMat(): void {
@@ -62,8 +63,9 @@ export class CreateBoardComponent implements OnInit {
     this.cdRef.detectChanges();
   }
 
-  remMat(): void {
-    this.materials.pop();
+  remMat(index: number): void {
+    this.materials.splice(index, 1);    
+    this.cdRef.detectChanges();
   }
 
   submit(): void {

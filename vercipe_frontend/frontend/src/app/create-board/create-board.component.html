@@ -15,20 +15,30 @@
     </div>
 
     <h3>Materials:</h3>
-    <div *ngFor="let mat of materials; let index=index;">
+    <div *ngFor="let mat of materials; let index=index; trackBy:trackByIndex;">
       <mat-form-field>
-        <input appFocusInput matInput placeholder="item {{index+1}}" (ngModel)="materials[index]"
+        <input appFocusInput matInput placeholder="item {{index+1}}" [(ngModel)]="materials[index]"
          (keydown.enter)="addMat()">
+         <button mat-button matSuffix mat-icon-button aria-label="Remove" (click)="remMat(index)">
+          <mat-icon>close</mat-icon>
+        </button>
       </mat-form-field>
     </div>
+    <button style="background-color:#3f51b5;" mat-raised-button color="primary" (click)="addMat()">+</button>
 
     <h3>Instructions:</h3>
-    <div *ngFor="let step of instructs; let index=index;">
+    <div *ngFor="let step of instructs; let index=index; trackBy:trackByIndex;">
       <mat-form-field>
-        <input appFocusInput matInput placeholder="step {{index+1}}" (ngModel)="instructs[index]"
+        <input appFocusInput matInput placeholder="step {{index+1}}" [(ngModel)]="instructs[index]"
          (keydown.enter)="addStep()">
+         <button mat-button matSuffix mat-icon-button aria-label="Remove" (click)="remStep(index)">
+          <mat-icon>close</mat-icon>
+        </button>
       </mat-form-field>
     </div>
+    <button style="background-color:#3f51b5; margin-bottom:1%;" mat-raised-button color="primary" (click)="addStep()">+</button>
+    <br>
+
 
     <div>
       <button style="background-color:green;" mat-raised-button color="primary"(click)="submit()">create</button>
