@@ -12,7 +12,6 @@ export class FocusInputDirective implements AfterContentInit {
   constructor(public elem: ElementRef) {}
 
   ngAfterContentInit() {
-    console.log('at least we\'re here');
     this.elem.nativeElement.focus();
   }
 }
@@ -54,7 +53,7 @@ export class CreateBoardComponent implements OnInit {
   }
 
   remStep(index: number): void {
-    this.instructs.splice(index, 1);    
+    this.instructs.splice(index, 1);
     this.cdRef.detectChanges();
   }
 
@@ -64,7 +63,7 @@ export class CreateBoardComponent implements OnInit {
   }
 
   remMat(index: number): void {
-    this.materials.splice(index, 1);    
+    this.materials.splice(index, 1);
     this.cdRef.detectChanges();
   }
 
