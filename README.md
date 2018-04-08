@@ -181,6 +181,17 @@ Response: 200, if success
 }
 ```
 
+#### [11] Get recipes by logged in user name (Creator)
+```
+Endpoint: POST /recipes/byUserName
+Authorization: none
+Request Body: {"creator":String}
+Response: 200, 
+{
+    "result":[recipes]
+}
+```
+
 
 ### User Auth : /users
 
