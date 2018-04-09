@@ -21,7 +21,7 @@ router.get('/', async(req, res, next)=>{
   console.log('before wait', new Date());
   await wait(5 * 1000);
   console.log('after wait', new Date())
-  res.send({"msg" : 'hello world2'});
+  res.send({"msg" : 'hello world'});
 });
 
 // [2] Create a new recipe
@@ -100,6 +100,15 @@ router.post("/recipes/previous/all", async (req, res) => {
     versions.push(current_recipe.previous_version);
   }
   res.send({"versions" : versions});
+});
+
+// [11] Get recipes by logged in user name (Creator)
+router.post("/recipes/byUserName", (req, res) => {
+  console.log("Findding result for", req.body.id)
+  recipe.find({ "creator": req.body.creator }, (err, result) => {
+    console.log(result);
+    res.send({"result": result});
+  });
 });
 
 module.exports = router;
