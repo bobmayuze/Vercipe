@@ -58,9 +58,11 @@ export class HeaderComponent implements OnInit {
       console.log(`Successfully logged in`);
       this.check = true;
       this.router.navigateByUrl('/');
+      window.location.reload();
     } else {
       console.log(`Please Login first`);
     }
+
   }
 
   async checkLogIn() {

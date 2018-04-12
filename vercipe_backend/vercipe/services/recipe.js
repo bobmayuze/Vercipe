@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var recipeModels = require('../models/models');
 var recipe = recipeModels.recipeModel;
+var userService = require('./user');
 
 module.exports.log = (msg)=>{
     console.log(msg);
@@ -66,6 +67,7 @@ module.exports.findRecipeByCreatorEmail = async(creator_email) => {
     await recipe.find({
         "creator_email": creator_email
     }, (err, result) => {
+        console.log("Result: ",result);
         target = result;
     });
     return target;    
@@ -73,7 +75,7 @@ module.exports.findRecipeByCreatorEmail = async(creator_email) => {
 
 module.exports.forkByRecipe = async(originalRecipe, username)=>{
     console.log("User: \n", username, "is cloning ", originalRecipe.title);
-
+    cloner = await userService.findUserByUsername(username);
     var newRecipe = new recipe;
     var flag;
     newRecipe.version = originalRecipe.version + 1;
@@ -82,6 +84,7 @@ module.exports.forkByRecipe = async(originalRecipe, username)=>{
     newRecipe.instructions = originalRecipe.instructions;
     newRecipe.materials = originalRecipe.materials;
     newRecipe.creator = username;
+    newRecipe.creator_email = cloner.email;
 
     await newRecipe.save((err) => {
         if (err) console.log(err);
