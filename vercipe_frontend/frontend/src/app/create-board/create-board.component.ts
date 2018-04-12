@@ -29,6 +29,7 @@ export class CreateBoardComponent implements OnInit {
   private title: string;
   private prepTime: number;
   private cookTime: number;
+  private prev_id: string = null;
   private instructs: string[] = [``];
   private materials: string[] = [``];
 
@@ -49,14 +50,16 @@ export class CreateBoardComponent implements OnInit {
 
   ngOnInit() {
     if (this.recipeService.getCopyExists()) {
-      const rec: any = this.recipeService.getCopy();
-      console.log(rec);
-      this.title = rec[`title`];
-      this.materials = rec[`materials`];
-      this.instructs = rec[`instructions`];
+      const originalRecipe: any = this.recipeService.getCopy();
+      console.log(`COPY SERVEICE CALLED  HERE`, originalRecipe);
+      this.title = originalRecipe[`title`];
+      this.materials = originalRecipe[`materials`];
+      this.instructs = originalRecipe[`instructions`];
+      this.prev_id = originalRecipe[`_id`];
       this.recipeService.setCopyExists(false);
       this.cdRef.detectChanges();
     }
+    this.cdRef.detectChanges();
   }
 
 
@@ -97,6 +100,7 @@ export class CreateBoardComponent implements OnInit {
       send.creator_email = user[`email`];
       send.materials = this.materials;
       send.instructions = this.instructs;
+      send.previous_version =  this.prev_id || `None`;
 
       this.recipeService.createRecipe(send);
 

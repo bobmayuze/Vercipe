@@ -31,7 +31,7 @@ module.exports.createByReq = (req, res)=>{
     newRecipe.instructions = req.body.instructions || ["A", "B", "C"];
     newRecipe.materials = req.body.materials || ["A", "B", "C"];
     newRecipe.version = req.body.version || 1;
-    newRecipe.previous_version = req.body.version || "None";
+    newRecipe.previous_version = req.body.previous_version || "None";
     newRecipe.save((err) => {
         if (err) console.log(err);
         else {

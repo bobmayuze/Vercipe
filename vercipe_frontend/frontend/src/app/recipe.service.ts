@@ -84,11 +84,11 @@ export class RecipeService {
     return this.cRecipe;
   }
 
-  setCopyExists(b: boolean){
+  setCopyExists(b: boolean) {
     this.copy = b;
   }
 
-  getCopyExists(){
+  getCopyExists() {
     return this.copy;
   }
 
