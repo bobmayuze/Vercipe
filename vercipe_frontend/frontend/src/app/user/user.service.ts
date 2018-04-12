@@ -14,7 +14,7 @@ const httpOptions = {
 @Injectable()
 export class UserService {
   // private adminUser: User;
-  private url = 'http://localhost:3000/users/';
+  private url = 'http://52.170.95.42:3000/users/';
   private result: any = `Not Initialized`;
   private data: string;
   private err: string;

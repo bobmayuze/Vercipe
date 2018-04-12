@@ -12,7 +12,7 @@ const httpOptions = {
 
 @Injectable()
 export class RecipeService {
-  private url = 'http://localhost:3000/';
+  private url = 'http://52.170.95.42:3000/';
   private data: string;
   private err: string;
 
