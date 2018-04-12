@@ -16,6 +16,9 @@ export class RecipeService {
   private data: string;
   private err: string;
 
+  private copy: boolean;
+  private cRecipe: Object;
+
   constructor(private http: HttpClient) { }
 
 
@@ -72,4 +75,21 @@ export class RecipeService {
   getVersionsById(targetId: string) {
     return this.http.post(this.url + `recipes/previous/all`, { id : targetId});
   }
+
+  setCopy(cRec: Object) {
+    this.cRecipe = cRec;
+  }
+
+  getCopy() {
+    return this.cRecipe;
+  }
+
+  setCopyExists(b: boolean){
+    this.copy = b;
+  }
+
+  getCopyExists(){
+    return this.copy;
+  }
+
 }

@@ -34,7 +34,7 @@
         <mat-action-row>
           <button mat-raised-button color="primary" (click)="getRecipeDetail(recipe.prev)">PREV</button>
           <span class="fill-remaining-space "></span>
-          <button mat-raised-button color="primary" routerLink="/dashboard">COPY</button>
+          <button mat-raised-button color="primary" (click)="copy(recipe)">COPY</button>
         </mat-action-row>
       </mat-expansion-panel>
     </mat-accordion>

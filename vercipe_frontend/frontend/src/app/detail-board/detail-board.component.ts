@@ -12,6 +12,7 @@ import { Recipe } from '../recipe';
     styleUrls: ['./detail-board.component.css']
 })
 export class DetailBoardComponent implements OnInit {
+    recipe: Object = null;
     title: string = null;
     creator: string = null;
     creator_email: string = null;
@@ -38,6 +39,7 @@ export class DetailBoardComponent implements OnInit {
     }
 
     renderRecipe = (recipe) => {
+        this.recipe = recipe;
         this.title = recipe.title;
         this.creator = recipe.creator;
         this.creator_email = recipe.creator_email;
@@ -73,15 +75,19 @@ export class DetailBoardComponent implements OnInit {
         this.goBack();
     }
 
+    cloneRecipe = () => {
+        this.service.setCopy(this.recipe);
+        this.service.setCopyExists(true);
+        this.router.navigateByUrl('/create');
     // To be completed
-    cloneRecipe = async () => {
-        const logInFlag = await this.userService.checkSignIn();
-        if (logInFlag) {
-            alert(`User Logged in`);
-            this.service.cloneRecipe(this.id);
-        } else {
-            alert(`Please Log in first`);
-        }
+    // cloneRecipe = async () => {
+    //     const logInFlag = await this.userService.checkSignIn();
+    //     if (logInFlag) {
+    //         alert(`User Logged in`);
+    //         this.service.cloneRecipe(this.id);
+    //     } else {
+    //         alert(`Please Log in first`);
+    //     }
     }
 
     goBack(): void {
