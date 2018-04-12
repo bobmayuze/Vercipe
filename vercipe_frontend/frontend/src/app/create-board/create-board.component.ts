@@ -50,6 +50,7 @@ export class CreateBoardComponent implements OnInit {
   ngOnInit() {
     if (this.recipeService.getCopyExists()) {
       const rec: any = this.recipeService.getCopy();
+      console.log(rec);
       this.title = rec[`title`];
       this.materials = rec[`materials`];
       this.instructs = rec[`instructions`];

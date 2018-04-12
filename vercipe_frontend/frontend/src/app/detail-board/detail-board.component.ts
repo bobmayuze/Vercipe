@@ -75,19 +75,15 @@ export class DetailBoardComponent implements OnInit {
         this.goBack();
     }
 
-    cloneRecipe = () => {
-        this.service.setCopy(this.recipe);
-        this.service.setCopyExists(true);
-        this.router.navigateByUrl('/create');
-    // To be completed
-    // cloneRecipe = async () => {
-    //     const logInFlag = await this.userService.checkSignIn();
-    //     if (logInFlag) {
-    //         alert(`User Logged in`);
-    //         this.service.cloneRecipe(this.id);
-    //     } else {
-    //         alert(`Please Log in first`);
-    //     }
+    cloneRecipe = async() => {
+        const logInFlag = await this.userService.checkSignIn();
+        if (logInFlag) {
+            this.service.setCopy(this.recipe);
+            this.service.setCopyExists(true);
+            this.router.navigateByUrl('/create');
+        } else {
+            alert(`Please Log in first`);
+        }
     }
 
     goBack(): void {
