@@ -17,52 +17,24 @@ export class DashboardComponent implements OnInit {
     private router: Router
   ) { }
 
-  private recipes = 
-    [
-      {
-	    "id": 1234,
-	    "title": "Baked Chicken",
-        "creator": "Fred",
-  	    "creator_Email": "red",
-	    "materials": ["Apples", "Chicken"],
-	    "instructions": ["Cut the apples","bake the chicken"],
-	    "created_at": 1521725976,
-	    "version": 1,
-	    "previous_version": ""
-      },
-      {
-	    "id": 1234,
-	    "title": "Baked Chicken",
-        "creator": "Fred",
-  	    "creator_Email": "red",
-	    "materials": ["Apples", "Chicken"],
-	    "instructions": ["Cut the apples","bake the chicken"],
-	    "created_at": 1521725976,
-	    "version": 1,
-	    "previous_version": ""
-      },
-      {
-	    "id": 1234,
-	    "title": "Baked Chicken",
-        "creator": "Fred",
-  	    "creator_Email": "red",
-	    "materials": ["Apples", "Chicken"],
-	    "instructions": ["Cut the apples","bake the chicken"],
-	    "created_at": 1521725976,
-	    "version": 1,
-	    "previous_version": ""
-      }
-    ];
+  private recipes;
 
-  /* getRecipes(): void {
+  getRecipes(useremail): void {
     this.recipes = null;
-    this.recipeSevice.getRecipeByEmail("email")
-      .subscribe(recipes => this.recipes = recipes);
-  } */
+    this.recipeSevice.getRecipeByEmail(useremail)
+      .subscribe((recipes) => {
+        console.log(recipes);
+        this.recipes = recipes.message;
+      });
+  }
 
-  ngOnInit() {
-    this.user = JSON.parse(sessionStorage.getItem(`currentUser`));
-    //this.getRecipes();
+
+  async ngOnInit() {
+    this.user = await JSON.parse(sessionStorage.getItem(`currentUser`));
+    console.log(this.user.email);
+    this.getRecipes(this.user.email);
+
+    // this.getRecipes();
   }
 
   testit(): void {
