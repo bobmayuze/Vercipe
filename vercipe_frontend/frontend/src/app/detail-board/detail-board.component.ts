@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 
 import { RecipeService } from '../recipe.service';
+import { UserService } from '../user/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Recipe } from '../recipe';
 
@@ -27,6 +28,7 @@ export class DetailBoardComponent implements OnInit {
     constructor(
         private location: Location,
         private service: RecipeService,
+        private userService: UserService,
         private route: ActivatedRoute,
         private router: Router
     ) { }
@@ -73,13 +75,19 @@ export class DetailBoardComponent implements OnInit {
         this.goBack();
     }
 
-    
     cloneRecipe = () => {
-        //Original
-        //this.service.cloneRecipe(this.id);
         this.service.setCopy(this.recipe);
         this.service.setCopyExists(true);
         this.router.navigateByUrl('/create');
+    // To be completed
+    // cloneRecipe = async () => {
+    //     const logInFlag = await this.userService.checkSignIn();
+    //     if (logInFlag) {
+    //         alert(`User Logged in`);
+    //         this.service.cloneRecipe(this.id);
+    //     } else {
+    //         alert(`Please Log in first`);
+    //     }
     }
 
     goBack(): void {

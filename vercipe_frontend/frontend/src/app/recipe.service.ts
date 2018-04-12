@@ -42,8 +42,8 @@ export class RecipeService {
     return this.http.post(this.url + 'recipes', {id : id});
   }
 
-  getRecipeByEmail(email) {
-    return this.http.post(this.url + 'recipes/byMail', {email: email});
+  getRecipeByEmail(email): any {
+    return this.http.post(this.url + 'users/allRecipes', { creator_email: email});
   }
 
   getRecipeByTitle(title) {

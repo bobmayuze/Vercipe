@@ -9,7 +9,10 @@ import { Router } from '@angular/router';
 })
 export class FocusInputDirective implements AfterContentInit {
   private firstTime: Boolean = true;
-  constructor(public elem: ElementRef) {}
+  constructor(
+    public elem: ElementRef,
+    private cdRef: ChangeDetectorRef
+  ) {}
 
   ngAfterContentInit() {
     this.elem.nativeElement.focus();
@@ -45,14 +48,16 @@ export class CreateBoardComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.recipeService.getCopyExists()){
+    if (this.recipeService.getCopyExists()) {
       const rec: any = this.recipeService.getCopy();
-      this.title = rec["title"];
-      this.materials = rec["materials"];
-      this.instructs = rec["instructions"];
+      this.title = rec[`title`];
+      this.materials = rec[`materials`];
+      this.instructs = rec[`instructions`];
       this.recipeService.setCopyExists(false);
+      this.cdRef.detectChanges();
     }
   }
+
 
   addStep(): void {
     this.instructs.push(``);

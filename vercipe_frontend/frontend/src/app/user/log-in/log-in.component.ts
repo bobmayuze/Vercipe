@@ -35,15 +35,15 @@ export class LogInComponent implements OnInit {
     user.password = this.password;
 
     loginResult = await this.userService.signIn(user);
-    console.log(loginResult);
+    console.log(`Login Result:` , loginResult);
 
-    let logInFlag: any;
-    logInFlag = await this.userService.checkSignIn();
-    if (logInFlag) {
-      console.log(`Successfully logged in`);
-      this.router.navigateByUrl('/');
+    const loginFlag: any = JSON.stringify(sessionStorage.getItem(`currentUser`));
+
+    if (loginFlag === `null`) {
+      alert(`Login Failed`);
     } else {
-      console.log(`Please Login first`);
+      alert(`Successfully logged in`);
+      window.location.reload();
     }
   }
 
