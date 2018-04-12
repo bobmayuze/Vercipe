@@ -31,7 +31,7 @@ export class CreateBoardComponent implements OnInit {
 
   constructor(
     private location: Location,
-    private recipeSevice: RecipeService,
+    private recipeService: RecipeService,
     private router: Router,
     private cdRef: ChangeDetectorRef
   ) { }
@@ -45,6 +45,13 @@ export class CreateBoardComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (this.recipeService.getCopyExists()){
+      const rec: any = this.recipeService.getCopy();
+      this.title = rec["title"];
+      this.materials = rec["materials"];
+      this.instructs = rec["instructions"];
+      this.recipeService.setCopyExists(false);
+    }
   }
 
   addStep(): void {
@@ -85,7 +92,7 @@ export class CreateBoardComponent implements OnInit {
       send.materials = this.materials;
       send.instructions = this.instructs;
 
-      this.recipeSevice.createRecipe(send);
+      this.recipeService.createRecipe(send);
 
       alert(`Submitted`);
 

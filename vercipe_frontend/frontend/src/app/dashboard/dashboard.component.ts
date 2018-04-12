@@ -13,7 +13,7 @@ export class DashboardComponent implements OnInit {
   user: any = null;
 
   constructor(
-    private recipeSevice: RecipeService,
+    private recipeService: RecipeService,
     private router: Router
   ) { }
 
@@ -73,5 +73,10 @@ export class DashboardComponent implements OnInit {
     alert(`Successfully Logged Out!`);
     sessionStorage.clear();
     this.router.navigateByUrl(`/`);
+  }
+  copy(recipe): void {
+    this.recipeService.setCopy(recipe);
+    this.recipeService.setCopyExists(true);
+    this.router.navigateByUrl('/create');
   }
 }
