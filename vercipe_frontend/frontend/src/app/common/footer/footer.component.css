@@ -1,16 +1,11 @@
-footer {
-  position: fixed;
-  bottom: 0em;
-  width: 100%;
-}
-
 .mat-toolbar {
+  position: fixed;
   font-size: 1em;
-  height: 3em;
 }
 
 .fill-remaining-space {
    /*This fills the remaining space, by using flexbox. 
-     Every toolbar row uses a flexbox row layout.*/ 
+     Every toolbar row uses a flexbox row layout.*/
+  margin: 1em;
   flex: 1 1 auto;
 }
