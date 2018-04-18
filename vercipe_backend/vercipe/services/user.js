@@ -40,7 +40,6 @@ module.exports.login = (req, res)=>{
             return res.status(404).send({ "msg": "Username or password doesn't match" });
         }
         console.log("Login successfully as", username);
-        console.log(result);
         req.session.user = result;
         return res.status(200).send(result);
         
@@ -54,4 +53,13 @@ module.exports.checkStatus = (req,res)=>{
     }
     return true;
     // return res.status(200).send("Welcome to Vercipe");
+}
+
+module.exports.findUserByUsername = async (userName)=>{
+    var targetUser;
+    await user.findOne({ username: userName},(err,result)=>{
+        console.log("User found: ======>",result);
+        targetUser = result
+    });
+    return targetUser;
 }

@@ -27,12 +27,13 @@ export class CreateBoardComponent implements OnInit {
   private title: string;
   private prepTime: number;
   private cookTime: number;
+  private prev_id: string = null;
   private instructs: string[] = [``];
   private materials: string[] = [``];
 
   constructor(
     private location: Location,
-    private recipeSevice: RecipeService,
+    private recipeService: RecipeService,
     private router: Router,
     private cdRef: ChangeDetectorRef
   ) { }
@@ -46,15 +47,28 @@ export class CreateBoardComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (this.recipeService.getCopyExists()) {
+      const originalRecipe: any = this.recipeService.getCopy();
+      console.log(`COPY SERVEICE CALLED  HERE`, originalRecipe);
+      this.title = originalRecipe[`title`];
+      this.materials = originalRecipe[`materials`];
+      this.instructs = originalRecipe[`instructions`];
+      this.prev_id = originalRecipe[`_id`];
+      this.recipeService.setCopyExists(false);
+      this.cdRef.detectChanges();
+    }
+    this.cdRef.detectChanges();
   }
+
 
   addStep(): void {
     this.instructs.push(``);
     this.cdRef.detectChanges();
   }
 
-  remStep(): void {
-    this.instructs.pop();
+  remStep(index: number): void {
+    this.instructs.splice(index, 1);
+    this.cdRef.detectChanges();
   }
 
   addMat(): void {
@@ -62,8 +76,9 @@ export class CreateBoardComponent implements OnInit {
     this.cdRef.detectChanges();
   }
 
-  remMat(): void {
-    this.materials.pop();
+  remMat(index: number): void {
+    this.materials.splice(index, 1);
+    this.cdRef.detectChanges();
   }
 
   submit(): void {
@@ -83,8 +98,9 @@ export class CreateBoardComponent implements OnInit {
       send.creator_email = user[`email`];
       send.materials = this.materials;
       send.instructions = this.instructs;
+      send.previous_version =  this.prev_id || `None`;
 
-      this.recipeSevice.createRecipe(send);
+      this.recipeService.createRecipe(send);
 
       alert(`Submitted`);
 

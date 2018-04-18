@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 import { User } from './user';
 
@@ -17,7 +18,10 @@ export class UserService {
   private result: any = `Not Initialized`;
   private data: string;
   private err: string;
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+  ) { }
 
   signIn(user) {
     let flag: any = `None`;
@@ -27,7 +31,7 @@ export class UserService {
           this.result = response;
           flag = true;
           sessionStorage.setItem(`currentUser`, JSON.stringify(response));
-          console.log(`Service: Success`);
+          console.log(`Service: User successfully loged in`);
           return flag;
         },
         (error) => {
@@ -39,20 +43,15 @@ export class UserService {
   }
 
   async checkSignIn() {
-    const requestBody: any = {};
-    requestBody.user = JSON.stringify(sessionStorage.getItem(`currentUser`));
-    if (requestBody.user) {
-      console.log(`SERVICE: LOGEED IN`);
-      return true;
-    } else {
+    const loginFlag: any = JSON.stringify(sessionStorage.getItem(`currentUser`));
+    console.log(loginFlag);
+    if (loginFlag === `null`) {
+      console.log(`Please Login First`);
       return false;
+    } else {
+      console.log(`User logged in already`);
+      return true;
     }
-    // await this.http.post(this.url + `dashboard`, requestBody).subscribe(
-    //   (result) => {
-    //     this.result = result;
-    //   }
-    // );
-    // return this.result;
   }
 
   async DemoService() {

@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var recipeModels = require('../models/models');
 var recipe = recipeModels.recipeModel;
+var userService = require('./user');
 
 module.exports.log = (msg)=>{
     console.log(msg);
@@ -30,7 +31,7 @@ module.exports.createByReq = (req, res)=>{
     newRecipe.instructions = req.body.instructions || ["A", "B", "C"];
     newRecipe.materials = req.body.materials || ["A", "B", "C"];
     newRecipe.version = req.body.version || 1;
-    newRecipe.previous_version = req.body.version || "None";
+    newRecipe.previous_version = req.body.previous_version || "None";
     newRecipe.save((err) => {
         if (err) console.log(err);
         else {
@@ -66,21 +67,24 @@ module.exports.findRecipeByCreatorEmail = async(creator_email) => {
     await recipe.find({
         "creator_email": creator_email
     }, (err, result) => {
+        console.log("Result: ",result);
         target = result;
     });
     return target;    
 };
 
-module.exports.forkByRecipe = async(originalRecipe, user=null)=>{
-    console.log("User: \n",user)
-
+module.exports.forkByRecipe = async(originalRecipe, username)=>{
+    console.log("User: \n", username, "is cloning ", originalRecipe.title);
+    cloner = await userService.findUserByUsername(username);
     var newRecipe = new recipe;
     var flag;
     newRecipe.version = originalRecipe.version + 1;
     newRecipe.previous_version = originalRecipe.id;
     newRecipe.title = originalRecipe.title;
+    newRecipe.instructions = originalRecipe.instructions;
     newRecipe.materials = originalRecipe.materials;
-    newRecipe.creator = user.username;
+    newRecipe.creator = username;
+    newRecipe.creator_email = cloner.email;
 
     await newRecipe.save((err) => {
         if (err) console.log(err);

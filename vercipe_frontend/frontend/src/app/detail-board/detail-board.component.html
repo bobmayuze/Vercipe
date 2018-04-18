@@ -2,10 +2,10 @@
   	<div>
 		{{ title }} <br/>
 		<mat-form-field>
-			<mat-select placeholder="Current version: {{version}}">
-				<!-- <mat-option *ngFor="let version of versions" -->
-				<mat-option value="option1">{{version}}</mat-option>
+			<mat-select placeholder="Current version: {{currentVersion}}">
+				<mat-option *ngFor="let record of previousVersions.versions" value="record" (click)="jumpTo(record)">{{record}}</mat-option>
 			</mat-select>
+			
 		</mat-form-field>
 		<br/>
 		{{ instructions }} <br/>
@@ -15,8 +15,8 @@
 
 	</div>
 	<div>
-		<button style="background: green;" mat-raised-button (click)="cloneRecipe()">clone</button>
-		<button style="background: yellow;" mat-raised-button (click)="goBack()">back</button>
-		<button style="background: red;" mat-raised-button (click)="deleteRecipe()">delete</button>
+		<button mat-raised-button color="primary" (click)="cloneRecipe()">CLONE TO MY INVENTORY</button>
+		<button mat-raised-button color="accent" (click)="goBack()">BACK</button>
+		<button mat-raised-button color="warn" (click)="deleteRecipe()">DELETE</button>
 	</div>
 </mat-card>

@@ -21,7 +21,7 @@ router.get('/', async(req, res, next)=>{
   console.log('before wait', new Date());
   await wait(5 * 1000);
   console.log('after wait', new Date())
-  res.send({"msg" : 'hello world2'});
+  res.send({"msg" : 'hello world'});
 });
 
 // [2] Create a new recipe
@@ -67,19 +67,15 @@ router.delete("/recipes",(req, res)=>{
 
 // [8] Clone a recipe from one recipe
 router.post("/recipes/forkById", async(req, res)=>{
-  const thisUser = req.session.user;
-  if (thisUser) {
-    const originalRecipe = await service.findRecipeById(mongoose.Types.ObjectId(req.body.id));
-    var flag = await service.forkByRecipe(originalRecipe, thisUser);
-    if (flag) {
-      res.send("Success");
-    } else {
-      res.send("Nahhhhhh");
-    };    
-  }
-  else{
-    res.send("Please login first.");
-  }
+  const username = req.body.username;
+  const originalRecipe = await service.findRecipeById(mongoose.Types.ObjectId(req.body.id));
+  var flag = await service.forkByRecipe(originalRecipe, username);
+  if (flag) {
+    res.send({"msg":"Success"});
+  } else {
+    res.send({"msg":"Nahhhhhh"});
+  };    
+
 
 })
 
@@ -104,6 +100,15 @@ router.post("/recipes/previous/all", async (req, res) => {
     versions.push(current_recipe.previous_version);
   }
   res.send({"versions" : versions});
+});
+
+// [11] Get recipes by logged in user name (Creator)
+router.post("/recipes/byUserName", (req, res) => {
+  console.log("Findding result for", req.body.id)
+  recipe.find({ "creator": req.body.creator }, (err, result) => {
+    console.log(result);
+    res.send({"result": result});
+  });
 });
 
 module.exports = router;

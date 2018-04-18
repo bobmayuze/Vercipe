@@ -16,6 +16,9 @@ export class RecipeService {
   private data: string;
   private err: string;
 
+  private copy: boolean;
+  private cRecipe: Object;
+
   constructor(private http: HttpClient) { }
 
 
@@ -39,8 +42,8 @@ export class RecipeService {
     return this.http.post(this.url + 'recipes', {id : id});
   }
 
-  getRecipeByEmail(email) {
-    return this.http.post(this.url + 'recipes/byMail', {email: email});
+  getRecipeByEmail(email): any {
+    return this.http.post(this.url + 'users/allRecipes', { creator_email: email});
   }
 
   getRecipeByTitle(title) {
@@ -48,11 +51,21 @@ export class RecipeService {
   }
 
   deleteRecipe(id) {
-    return this.http.delete(this.url + 'recipes', { params: {id : id} });
+    return this.http.delete(this.url + 'recipes', { params: {id : id} }).subscribe(
+      data => this.data,
+      err => this.err
+    );
   }
 
   cloneRecipe(id) {
-    return this.http.post(this.url + 'recipe/forkById', {id: id});
+    const user: any = JSON.parse(sessionStorage.getItem(`currentUser`));
+    return this.http.post(this.url + 'recipes/forkById', {
+      id: id,
+      username: user[`username`]
+    }).subscribe(
+      data => this.data,
+      err => this.err
+    );
   }
 
   getAllRecipes() {
@@ -62,4 +75,21 @@ export class RecipeService {
   getVersionsById(targetId: string) {
     return this.http.post(this.url + `recipes/previous/all`, { id : targetId});
   }
+
+  setCopy(cRec: Object) {
+    this.cRecipe = cRec;
+  }
+
+  getCopy() {
+    return this.cRecipe;
+  }
+
+  setCopyExists(b: boolean) {
+    this.copy = b;
+  }
+
+  getCopyExists() {
+    return this.copy;
+  }
+
 }
