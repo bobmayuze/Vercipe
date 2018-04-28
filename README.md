@@ -2,6 +2,7 @@
 Version control based recipe for Spring 18 ITWS 4500 course. 
 All project materials such as the Proposal and Presentation can be found in the MISC folder.
 A server hosting our project can be found here: http://52.170.95.42/
+Our slides and notes for the final presentation can be found here: https://docs.google.com/presentation/d/10IKhqsdQ-_AgRApVFVHrB_aBnAiZC4t5sGASLMGvUnw/edit?usp=sharing
 
 ## Getting Started
 Before you started, make sure you have docker installed and can run the hello-world demo.
