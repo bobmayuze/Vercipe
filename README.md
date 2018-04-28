@@ -1,6 +1,7 @@
 # Vercipe
 Version control based recipe for Spring 18 ITWS 4500 course. 
 All project materials such as the Proposal and Presentation can be found in the MISC folder.
+A server hosting our project can be found here: http://52.170.95.42/
 
 ## Getting Started
 Before you started, make sure you have docker installed and can run the hello-world demo.
