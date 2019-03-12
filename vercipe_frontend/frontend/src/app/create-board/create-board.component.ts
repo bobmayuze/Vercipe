@@ -8,14 +8,12 @@ import { Router } from '@angular/router';
   selector: '[appFocusInput]'
 })
 export class FocusInputDirective implements AfterContentInit {
-  private firstTime: Boolean = true;
-  constructor(
-    public elem: ElementRef,
-    private cdRef: ChangeDetectorRef
-  ) {}
+  constructor(public elem: ElementRef) {}
 
   ngAfterContentInit() {
-    this.elem.nativeElement.focus();
+    if (this.elem.nativeElement.attributes[4].value.slice(-1) !== '1') {
+      this.elem.nativeElement.focus();
+    }
   }
 }
 
